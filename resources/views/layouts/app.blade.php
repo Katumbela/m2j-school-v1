@@ -361,6 +361,7 @@
         }
     </style>
     <!-- Scripts -->
+    <script src="{{ asset('js/jquery-2.1.3.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-3.3.7.min.js') }}"></script>
     <script src="{{ asset('js/dataTables-1.10.16.min.js') }}"></script>
     <script src="{{ asset('js/dataTables-1.10.16.bootstrap.min.js') }}"></script>

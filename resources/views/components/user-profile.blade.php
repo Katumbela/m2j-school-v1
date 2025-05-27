@@ -1,3 +1,4 @@
+@if($user)
 <div class="row">
   <div class="col-md-2">
     @if(!empty($user->pic_path))
@@ -61,13 +62,13 @@
                 </tr>
                 <tr>
                   <td>Session:</td>
-                  <td>{{$user->studentInfo['session']}}</td>
+                  <td>{{$user->studentInfo['session'] ?? 'N/A'}}</td>
                   <td>Version:</td>
-                  <td>{{$user->studentInfo['version']}}</td>
+                  <td>{{$user->studentInfo['version'] ?? 'N/A'}}</td>
                 </tr>
                 <tr>
                   <td>Group:</td>
-                  <td>{{$user->studentInfo['group']}}</td>
+                  <td>{{$user->studentInfo['group'] ?? 'N/A'}}</td>
                   <td colspan="2"></td>
                 </tr>
               </table>
@@ -108,17 +109,17 @@
                   <td>Nationality:</td>
                   <td>{{$user->nationality}}</td>
                   <td>Birthday:</td>
-                  <td>{{Carbon\Carbon::parse($user->birthday)->format('d/m/Y')}}</td>
+                  <td>{{$user->birthday ? Carbon\Carbon::parse($user->birthday)->format('d/m/Y') : 'N/A'}}</td>
                 </tr>
                 <tr>
                   <td>Religion:</td>
-                  <td>{{$user->studentInfo['religion']}}</td>
+                  <td>{{$user->studentInfo['religion'] ?? 'N/A'}}</td>
                   <td>Father Name:</td>
-                  <td>{{$user->studentInfo['father_name']}}</td>
+                  <td>{{$user->studentInfo['father_name'] ?? 'N/A'}}</td>
                 </tr>
                 <tr>
                   <td>Mother Name:</td>
-                  <td>{{$user->studentInfo['mother_name']}}</td>
+                  <td>{{$user->studentInfo['mother_name'] ?? 'N/A'}}</td>
                   <td>Address:</td>
                   <td>{{$user->address}}</td>
                 </tr>
@@ -126,35 +127,35 @@
                   <td>Phone Number:</td>
                   <td>{{$user->phone_number}}</td>
                   <td>Father's Phone Number:</td>
-                  <td>{{$user->studentInfo['father_phone_number']}}</td>
+                  <td>{{$user->studentInfo['father_phone_number'] ?? 'N/A'}}</td>
                 </tr>
                 <tr>
                   <td>Father's National ID:</td>
-                  <td>{{$user->studentInfo['father_national_id']}}</td>
+                  <td>{{$user->studentInfo['father_national_id'] ?? 'N/A'}}</td>
                   <td>Father's Occupation:</td>
-                  <td>{{$user->studentInfo['father_occupation']}}</td>
+                  <td>{{$user->studentInfo['father_occupation'] ?? 'N/A'}}</td>
                 </tr>
                 <tr>
                   <td>Father's Designation:</td>
-                  <td>{{$user->studentInfo['father_designation']}}</td>
+                  <td>{{$user->studentInfo['father_designation'] ?? 'N/A'}}</td>
                   <td>Father's Annual Income:</td>
-                  <td>{{$user->studentInfo['father_annual_income']}}</td>
+                  <td>{{$user->studentInfo['father_annual_income'] ?? 'N/A'}}</td>
                 </tr>
                 <tr>
                   <td>Mother's Phone Number:</td>
-                  <td>{{$user->studentInfo['mother_phone_number']}}</td>
+                  <td>{{$user->studentInfo['mother_phone_number'] ?? 'N/A'}}</td>
                   <td>Mother's National ID:</td>
-                  <td>{{$user->studentInfo['mother_national_id']}}</td>
+                  <td>{{$user->studentInfo['mother_national_id'] ?? 'N/A'}}</td>
                 </tr>
                 <tr>
                   <td>Mother's Occupation:</td>
-                  <td>{{$user->studentInfo['mother_occupation']}}</td>
+                  <td>{{$user->studentInfo['mother_occupation'] ?? 'N/A'}}</td>
                   <td>Mother's Designation:</td>
-                  <td>{{$user->studentInfo['mother_designation']}}</td>
+                  <td>{{$user->studentInfo['mother_designation'] ?? 'N/A'}}</td>
                 </tr>
                 <tr>
                   <td>Mother's Annual Income:</td>
-                  <td>{{$user->studentInfo['mother_annual_income']}}</td>
+                  <td>{{$user->studentInfo['mother_annual_income'] ?? 'N/A'}}</td>
                   <td>About:</td>
                   <td>{{$user->about}}</td>
                 </tr>
@@ -174,8 +175,6 @@
             printWindow.document.write(tableContent);
             printWindow.document.write('</div></div></body></html>');
             printWindow.document.close();
-            // var academicPart = printWindow.document.getElementById("academic-part");
-            // academicPart.appendChild(resultTable);
             printWindow.print();
           });
         </script>
@@ -189,7 +188,7 @@
           <td><b>Code:</b></td>
           <td>{{$user->student_code}}</td>
           <td><b>Session:</b></td>
-          <td>{{$user->studentInfo['session']}}</td>
+          <td>{{$user->studentInfo['session'] ?? 'N/A'}}</td>
           @else
           <td><b>Code:</b></td>
           <td>{{$user->student_code}}</td>
@@ -206,29 +205,29 @@
         </tr>
         <tr>
           <td><b>Version:</b></td>
-          <td>{{$user->studentInfo['version']}}</td>
+          <td>{{$user->studentInfo['version'] ?? 'N/A'}}</td>
           <td><b>Blood Group:</b></td>
           <td>{{$user->blood_group}}</td>
         </tr>
         <tr>
           <td><b>Group:</b></td>
-          <td>{{$user->studentInfo['group']}}</td>
+          <td>{{$user->studentInfo['group'] ?? 'N/A'}}</td>
           <td><b>Birthday:</b></td>
-          <td>{{Carbon\Carbon::parse($user->birthday)->format('d/m/Y')}}</td>
+          <td>{{$user->birthday ? Carbon\Carbon::parse($user->birthday)->format('d/m/Y') : 'N/A'}}</td>
         </tr>
         @endif
         <tr>
           <td><b>Nationality:</b></td>
           <td>{{$user->nationality}}</td>
           <td><b>Religion:</b></td>
-          <td>{{$user->studentInfo['religion']}}</td>
+          <td>{{$user->studentInfo['religion'] ?? 'N/A'}}</td>
         </tr>
         @if($user->role == "student")
         <tr>
           <td><b>Father Name:</b></td>
-          <td>{{$user->studentInfo['father_name']}}</td>
+          <td>{{$user->studentInfo['father_name'] ?? 'N/A'}}</td>
           <td><b>Mother Name:</b></td>
-          <td>{{$user->studentInfo['mother_name']}}</td>
+          <td>{{$user->studentInfo['mother_name'] ?? 'N/A'}}</td>
         </tr>
         @endif
         <tr>
@@ -240,41 +239,37 @@
         @if($user->role == "student")
         <tr>
           <td><b>Father's Phone Number:</b></td>
-          <td>{{$user->studentInfo['father_phone_number']}}</td>
+          <td>{{$user->studentInfo['father_phone_number'] ?? 'N/A'}}</td>
           <td><b>Father's National ID:</b></td>
-          <td>{{$user->studentInfo['father_national_id']}}</td>
+          <td>{{$user->studentInfo['father_national_id'] ?? 'N/A'}}</td>
         </tr>
         <tr>
           <td><b>Father's Occupation:</b></td>
-          <td>{{$user->studentInfo['father_occupation']}}</td>
+          <td>{{$user->studentInfo['father_occupation'] ?? 'N/A'}}</td>
           <td><b>Father's Designation:</b></td>
-          <td>{{$user->studentInfo['father_designation']}}</td>
+          <td>{{$user->studentInfo['father_designation'] ?? 'N/A'}}</td>
         </tr>
         <tr>
           <td><b>Father's Annual Income:</b></td>
-          <td>{{$user->studentInfo['father_annual_income']}}</td>
+          <td>{{$user->studentInfo['father_annual_income'] ?? 'N/A'}}</td>
           <td><b>Mother's Phone Number:</b></td>
-          <td>{{$user->studentInfo['mother_phone_number']}}</td>
+          <td>{{$user->studentInfo['mother_phone_number'] ?? 'N/A'}}</td>
         </tr>
         <tr>
           <td><b>Mother's National ID:</b></td>
-          <td>{{$user->studentInfo['mother_national_id']}}</td>
+          <td>{{$user->studentInfo['mother_national_id'] ?? 'N/A'}}</td>
           <td><b>Mother's Occupation:</b></td>
-          <td>{{$user->studentInfo['mother_occupation']}}</td>
+          <td>{{$user->studentInfo['mother_occupation'] ?? 'N/A'}}</td>
         </tr>
         <tr>
           <td><b>Mother's Designation:</b></td>
-          <td>{{$user->studentInfo['mother_designation']}}</td>
+          <td>{{$user->studentInfo['mother_designation'] ?? 'N/A'}}</td>
           <td><b>Mother's Annual Income:</b></td>
-          <td>{{$user->studentInfo['mother_annual_income']}}</td>
-        </tr>
-        <tr>
-          <td><b>About:</b></td>
-          <td colspan="3">{{$user->about}}</td>
+          <td>{{$user->studentInfo['mother_annual_income'] ?? 'N/A'}}</td>
         </tr>
         @endif
       </tbody>
     </table>
-    </div>
   </div>
 </div>
+@endif

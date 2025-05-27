@@ -110,8 +110,10 @@ class UserController extends Controller
      */
     public function create($student_code)
     {
-      //$user = User::with('section')->where('code', Auth::user()->code)->where('student_code', $student_code)->first();
-      $user = User::with('section','studentInfo')->where('student_code', $student_code)->first();
+      $user = User::with(['section','studentInfo'])->where('student_code', $student_code)->first();
+      if (!$user) {
+        return view('profile.user', ['user' => null]);
+      }
       return view('profile.user', ['user' => $user]);
     }
 

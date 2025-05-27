@@ -6,10 +6,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "jdavidbakr/laravel-cache-garbage-collector": "^1.0",
         "laravel/framework": "^8.54",
+        "laravel/passport": "*",
         "laravel/tinker": "^2.5",
+        "mavinoo/laravel-batch": "*",
+        "rap2hpoutre/laravel-log-viewer": "*",
         "spatie/laravel-permission": "^4.2",
         "stevebauman/purify": "^4.0"
     },

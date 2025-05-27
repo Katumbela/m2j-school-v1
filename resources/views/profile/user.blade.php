@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@if(count($user) > 0)
+@if(isset($user))
   @section('title', $user->name)
 @endif
 
@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-10" id="main-container">
             <div class="panel panel-default">
-              @if(count($user) > 0)
+              @if(isset($user))
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">

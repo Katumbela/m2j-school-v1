@@ -1,5 +1,6 @@
 <?php
 
+
 return [
 
     /*
@@ -65,7 +66,7 @@ return [
     |
     */
 
-    'timezone' => 'Asia/Dhaka',//'UTC',
+    'timezone' => 'Asia/Dhaka', //'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -176,7 +177,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Mavinoo\LaravelBatch\LaravelBatchServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
     ],
 
@@ -226,7 +226,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Batch' => Mavinoo\LaravelBatch\LaravelBatchFacade::class,
+        'Batch' => Mavinoo\Batch\BatchFacade::class,
     ],
 
 ];

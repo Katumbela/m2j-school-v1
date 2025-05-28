@@ -30,9 +30,9 @@
             <div class="col-sm-10">
               <select class="form-control" id="assignTeacher{{$section->id}}" name="teacher_id">
                 <option value="0" selected disabled>Selecione o Departamento Primeiro</option>
-              @foreach($teachers as $teacher)
-                <option value="{{$teacher->id}}" data-department="{{$teacher->department->department_name}}">{{$teacher->name}} {{$teacher->department->department_name}}</option>
-              @endforeach
+                @foreach($teachers as $teacher)
+                  <option value="{{$teacher->id}}" data-department="{{$teacher->department->department_name}}">{{$teacher->name}} ({{$teacher->department->department_name}})</option>
+                @endforeach
               </select>
             </div>
           </div>
@@ -63,8 +63,26 @@
     </div>
   </div>
 <script>
-  $('#teacherDepartment{{$section->id}}').click(function () {
-    $("#assignTeacher{{$section->id}} option").hide();
-    $("#assignTeacher{{$section->id}} option[data-department="+$(this).val()+"]").show();
+  $(document).ready(function() {
+    var teacherSelect = $("#assignTeacher{{$section->id}}");
+    // Initially show all teachers except the first option
+    teacherSelect.find('option').not(':first').show();
+  });
+
+  $('#teacherDepartment{{$section->id}}').on('change', function () {
+    var selectedDepartment = $(this).val();
+    var teacherSelect = $("#assignTeacher{{$section->id}}");
+    
+    // Show all teachers first
+    teacherSelect.find('option').not(':first').show();
+    
+    if (selectedDepartment !== '0') {
+      // Hide teachers that don't belong to the selected department
+      teacherSelect.find('option').not(':first').each(function() {
+        if ($(this).data('department') !== selectedDepartment) {
+          $(this).hide();
+        }
+      });
+    }
   });
 </script>

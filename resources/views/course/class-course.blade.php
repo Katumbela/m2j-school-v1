@@ -11,11 +11,11 @@
         <div class="col-md-10" id="main-container">
             @if(Auth::user()->role != 'student')
             <ol class="breadcrumb" style="margin-top: 3%;">
-                <li><a href="{{url('school/sections?course=1')}}" style="color:#3b80ef;">All Classes &amp; Sections</a></li>
-                <li class="active">Courses</li>
+                <li><a href="{{url('school/sections?course=1')}}" style="color:#3b80ef;">Todas as Turmas e Seções</a></li>
+                <li class="active">Cursos</li>
             </ol>
             @endif
-            <h2>Courses Related to Section</h2>
+            <h2>Cursos Relacionados à Seção</h2>
             <div class="panel panel-default">
               @if(count($courses) > 0)
                 @foreach ($courses as $course)
@@ -34,7 +34,7 @@
                 </div>
               @else
                 <div class="panel-body">
-                    No Related Data Found.
+                    Nenhum Dado Relacionado Encontrado.
                 </div>
               @endif
             </div>

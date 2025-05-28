@@ -69,7 +69,7 @@
             @if(strtolower($user->gender) == 'male')
             <img src="{{asset('01-progress.gif')}}" data-src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg" style="border-radius: 50%;" width="25px" height="25px">&nbsp;
             @else
-            <img src="{{asset('01-progress.gif')}}" data-src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg" style="border-radius: 50%;" width="25px" height="25px">&nbsp;
+            <img src="{{asset('01-progress.gif')}}" data-src="https://hoteltopic.com/wp-content/uploads/2018/02/female-user-icon-7.png" style="border-radius: 50%;" width="25px" height="25px">&nbsp;
             @endif
             @endif
             <a href="{{url('user/'.$user->student_code)}}">

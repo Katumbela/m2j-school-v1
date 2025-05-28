@@ -19,14 +19,14 @@
             top: 0px;
             width: 100%;
             height: 100%;
-            z-index: 999999; 
-            background-color: #fff; 
+            z-index: 999999;
+            background-color: #fff;
         }
 
         .loader img {
             width: 10rem;
             height: 10rem;
-            border-radius: 10%; 
+            border-radius: 10%;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -85,8 +85,8 @@
                                 role="button">
                                 <i class="material-icons text-muted">email</i>
                                 <?php
-                                        $mc = \App\Notification::where('student_id',\Auth::user()->id)->where('active',1)->count();
-                                    ?>
+                                $mc = \App\Notification::where('student_id', \Auth::user()->id)->where('active', 1)->count();
+                                ?>
                                 @if($mc > 0)
                                 <span class="label label-danger" style="vertical-align: middle;border-style: none;border-radius: 50%;width: 30px;height: 30px;">{{$mc}}</span>
                                 @endif
@@ -104,10 +104,10 @@
                                     style="vertical-align: middle;border-style: none;border-radius: 50%;width: 30px;height: 30px;">
                                 @else
                                 @if(strtolower(Auth::user()->gender) == 'male')
-                                <img src="{{asset('01-progress.gif')}}" data-src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg"
+                                <img src="{{asset('01-progress.gif')}}" data-src="https://hoteltopic.com/wp-content/uploads/2018/02/female-user-icon-7.png"
                                     alt="Profile Picture" style="vertical-align: middle;border-style: none;border-radius: 50%;width: 30px;height: 30px;">
                                 @else
-                                <img src="{{asset('01-progress.gif')}}" data-src="https://hoteltopic.com/wp-content/uploads/2018/02/female-user-icon-7.png"
+                                <img src="{{asset('01-progress.gif')}}" data-src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg"
                                     alt="Profile Picture" style="vertical-align: middle;border-style: none;border-radius: 50%;width: 30px;height: 30px;">
                                 @endif
                                 @endif
@@ -117,7 +117,7 @@
                             <ul class="dropdown-menu">
                                 @if(Auth::user()->role != 'master')
                                 <li>
-                                    <a href="{{url('user/'.Auth::user()->student_code)}}">Perfil</a>   
+                                    <a href="{{url('user/'.Auth::user()->student_code)}}">Perfil</a>
                                 </li>
                                 @endif
                                 <li>
@@ -271,7 +271,7 @@
             font-family: 'Material Icons';
             font-style: normal;
             font-weight: 400;
-            src: url('{{asset('css/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2')}}') format('woff2');
+            src: url('{{asset(' css/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2')}}') format('woff2');
         }
 
         .material-icons {
@@ -380,15 +380,15 @@
     <script src="{{ asset('js/dataTables-1.10.16.bootstrap.min.js') }}"></script>
 
     <script>
-        $(window).load(function () {
+        $(window).load(function() {
             $('.loader').fadeOut();
         });
-        $(document).ready(function () {
+        $(document).ready(function() {
             var myTable = $('.table-data-div').DataTable({
                 paging: false,
             });
         });
-        window.addEventListener('load', function () {
+        window.addEventListener('load', function() {
             var allimages = document.getElementsByTagName('img');
             for (var i = 0; i < allimages.length; i++) {
                 if (allimages[i].getAttribute('data-src')) {

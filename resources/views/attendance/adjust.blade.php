@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Attendance')
+@section('title', 'Presença')
 
 @section('content')
 <div class="container-fluid">
@@ -12,12 +12,12 @@
             @if(count($attendances) > 0)
                 @if(Auth::user()->role != 'student')
                 <ol class="breadcrumb" style="margin-top: 3%;">
-                    <li><a href="{{url('school/sections?att=1')}}" style="color:#3b80ef;">Classes &amp; Sections</a></li>
-                    <li><a href="{{url()->previous()}}" style="color:#3b80ef;">List of Students</a></li>
-                    <li class="active">View Attendance</li>
+                    <li><a href="{{url('school/sections?att=1')}}" style="color:#3b80ef;">Turmas &amp; Seções</a></li>
+                    <li><a href="{{url()->previous()}}" style="color:#3b80ef;">Lista de Estudantes</a></li>
+                    <li class="active">Ver Presença</li>
                 </ol>
                 @endif
-                <h2>Adjust Attendance of Student -  {{$attendances[0]->student->name}}</h2>
+                <h2>Ajustar Presença do Estudante -  {{$attendances[0]->student->name}}</h2>
             @endif
             <div class="panel panel-default">
                 @if(count($attendances) > 0)
@@ -34,7 +34,7 @@
                 </div>
                 @else
                 <div class="panel-body">
-                    No Related Data Found.
+                    Nenhum Dado Relacionado Encontrado.
                 </div>
                 @endif
             </div>

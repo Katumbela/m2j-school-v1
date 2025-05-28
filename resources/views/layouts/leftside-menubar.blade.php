@@ -228,7 +228,7 @@
       class="nav-link-text">Minhas Notas</span></a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="#"><i class="material-icons">payment</i> <span class="nav-link-text">Histórico de Pagamentos</span></a>
+  <a class="nav-link" href="#"><i class="material-icons">payment</i> <span class="nav-link-text">Hist. de Pagamentos</span></a>
 </li>
 @endif
 {{--<div style="text-align:center;">Student</div>--}}

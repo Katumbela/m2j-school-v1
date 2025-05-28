@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 27-Maio-2025 às 13:41
+-- Tempo de geração: 28-Maio-2025 às 13:17
 -- Versão do servidor: 9.1.0
 -- versão do PHP: 8.3.14
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `unifiedtransformv1`
+-- Banco de dados: `m2j_saas`
 --
 
 -- --------------------------------------------------------
@@ -122,7 +122,14 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `classes`
+--
+
+INSERT INTO `classes` (`id`, `class_number`, `school_id`, `group`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'A01', 1, '', 0, '2025-05-28 14:32:03', '2025-05-28 14:32:03');
 
 -- --------------------------------------------------------
 
@@ -161,7 +168,14 @@ CREATE TABLE IF NOT EXISTS `courses` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `courses`
+--
+
+INSERT INTO `courses` (`id`, `course_name`, `class_id`, `course_type`, `course_time`, `grade_system_name`, `quiz_count`, `assignment_count`, `ct_count`, `quiz_percent`, `attendance_percent`, `assignment_percent`, `ct_percent`, `final_exam_percent`, `practical_percent`, `att_fullmark`, `quiz_fullmark`, `a_fullmark`, `ct_fullmark`, `final_fullmark`, `practical_fullmark`, `school_id`, `exam_id`, `teacher_id`, `section_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'Análise e Desenvolvimento de Sistemas', 1, 'elective', '12:50PM-01:40PM Seg-Sexta', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 0, '2025-05-28 18:08:58', '2025-05-28 18:08:58');
 
 -- --------------------------------------------------------
 
@@ -177,7 +191,14 @@ CREATE TABLE IF NOT EXISTS `departments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `departments`
+--
+
+INSERT INTO `departments` (`id`, `school_id`, `department_name`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Ciencias Sociais', '2025-05-28 14:07:26', '2025-05-28 14:07:26');
 
 -- --------------------------------------------------------
 
@@ -362,7 +383,14 @@ CREATE TABLE IF NOT EXISTS `grade_systems` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `grade_systems`
+--
+
+INSERT INTO `grade_systems` (`id`, `grade_system_name`, `grade`, `point`, `from_mark`, `to_mark`, `school_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'GPA', 'A+', 5.00, 50, 100, 1, 2, '2025-05-28 18:12:33', '2025-05-28 18:12:33');
 
 -- --------------------------------------------------------
 
@@ -627,6 +655,13 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Extraindo dados da tabela `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('joao@m2j.ao', '$2y$10$ri1SUshL6KyZl2a30lcQnOExmU9QuNkjhRJGnUTNZIy0vk5.2Qwxy', '2025-05-28 15:10:08');
+
 -- --------------------------------------------------------
 
 --
@@ -666,7 +701,14 @@ CREATE TABLE IF NOT EXISTS `schools` (
   `theme` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `schools_code_unique` (`code`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `schools`
+--
+
+INSERT INTO `schools` (`id`, `created_at`, `updated_at`, `name`, `established`, `about`, `medium`, `code`, `theme`) VALUES
+(1, '2025-05-28 13:09:12', '2025-05-28 13:09:12', 'M2J Technologies', 'asd', 'sds', 'English', 25453404, 'flatly');
 
 -- --------------------------------------------------------
 
@@ -684,7 +726,14 @@ CREATE TABLE IF NOT EXISTS `sections` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `sections`
+--
+
+INSERT INTO `sections` (`id`, `section_number`, `room_number`, `class_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'ABBB', 1, 1, 0, '2025-05-28 14:32:22', '2025-05-28 14:32:22');
 
 -- --------------------------------------------------------
 
@@ -742,7 +791,14 @@ CREATE TABLE IF NOT EXISTS `student_infos` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `student_infos`
+--
+
+INSERT INTO `student_infos` (`id`, `student_id`, `session`, `version`, `group`, `birthday`, `religion`, `father_name`, `father_phone_number`, `father_national_id`, `father_occupation`, `father_designation`, `father_annual_income`, `mother_name`, `mother_phone_number`, `mother_national_id`, `mother_occupation`, `mother_designation`, `mother_annual_income`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 4, '05/15/2025', 'English', '', '0000-00-00 00:00:00', 'Christianism', 'Father', '21234324', '24323', 'Driver', 'efde', 20000, 'Paulina', '232', '23432', 'HouseWife', 'wede', 100000, 2, '2025-05-28 16:14:24', '2025-05-28 16:14:24');
 
 -- --------------------------------------------------------
 
@@ -798,7 +854,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`),
   UNIQUE KEY `users_student_code_unique` (`student_code`),
   UNIQUE KEY `users_phone_number_unique` (`phone_number`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `role`, `active`, `school_id`, `code`, `student_code`, `gender`, `blood_group`, `nationality`, `phone_number`, `address`, `about`, `pic_path`, `verified`, `section_id`, `created_at`, `updated_at`, `department_id`) VALUES
+(1, 'João A. Katombela', 'katumbela@m2j.ao', '$2y$10$PLHOpKjsevg.1dCN280ZyO9FCJHBf7I7j/SGukZFd60/Qgp1JU2VS', NULL, 'master', 1, 0, 0, 0, '', '', '', '', '', '', '', 1, 0, NULL, NULL, 0),
+(2, 'João Afonso Katombela', 'joao@m2j.ao', '$2y$10$rqt1BgPima.fimZrjpQgmeYb/a8Opw/yLVJWrOJR5n5S4ItDuiFdS', 'lAIIOzBgTHnEV491mJo5CdS4kKRh1Rw9I9F8FqfMsGWeGFyUUFO7pNmubcMA', 'admin', 1, 1, 25453404, 12525191, 'Male', 'A+', 'Angolan', '000', '', '', '', 1, 0, '2025-05-28 13:23:46', '2025-05-28 13:23:46', 0),
+(3, 'Zacarias Mavungo', 'zack@m2j.ao', '$2y$10$qUGwvyU0Mtoh6ZEuwX1DVeeq2sxBiEufFFUayp0q0jpsBFzUn2mte', NULL, 'teacher', 1, 1, 25453404, 12573727, 'Male', 'A+', '', '00000000', 'Luanda, Angola', 'Professor de Biologia', '', 1, 1, '2025-05-28 14:14:42', '2025-05-28 18:07:26', 1),
+(4, 'Francisco Adriano', 'francisco@m2j.ao', '$2y$10$IHQVgmiEPl4rnzs.n9JwIeEgD8iiGi9Lt0X./33CrS2rd2H727v9y', NULL, 'student', 1, 1, 25453404, 12511328, 'Masculino', 'B-', 'Angola', '928134249', 'Luanda, Angola', 'Estudante de teste', '', 1, 1, '2025-05-28 16:14:24', '2025-05-28 16:14:24', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

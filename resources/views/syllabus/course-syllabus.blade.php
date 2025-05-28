@@ -17,9 +17,9 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
                     @endif
                     @component('components.file-uploader',['upload_type'=>'syllabus'])
                     @endcomponent

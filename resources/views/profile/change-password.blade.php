@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Change Password')
+@section('title', 'Alterar Senha')
 
 @section('content')
 <div class="container-fluid">
@@ -21,7 +21,7 @@
         <div class="col-md-10" id="main-container">
             <div class="panel panel-default">
                 <div class="page-panel-title">
-                    Change Password
+                    Alterar Senha
                 </div>
                 <div class="panel-body">
                     @if (session('status'))
@@ -38,7 +38,7 @@
                     <form class="form-horizontal" action="{{url('user/config/change_password')}}" method="post">
                         {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('old_password') ? ' has-error' : '' }}">
-                            <label for="old_password" class="col-md-4 control-label">Old Password</label>
+                            <label for="old_password" class="col-md-4 control-label">Senha Antiga</label>
 
                             <div class="col-md-6">
                                 <input id="old_password" type="text" class="form-control" name="old_password" value="{{ old('old_password') }}" required>
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('new_password') ? ' has-error' : '' }}">
-                            <label for="new_password" class="col-md-4 control-label">New Password</label>
+                            <label for="new_password" class="col-md-4 control-label">Nova Senha</label>
 
                             <div class="col-md-6">
                                 <input id="new_password" type="text" class="form-control" name="new_password" value="{{ old('new_password') }}" required>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-8">
-                                <button type="submit" class="btn btn-danger">Submit</button>
+                                <button type="submit" class="btn btn-danger">Salvar</button>
                             </div>
                         </div>
                     </form>

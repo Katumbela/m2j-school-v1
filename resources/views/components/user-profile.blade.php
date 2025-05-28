@@ -75,12 +75,12 @@
             </div>
             <div class="col-xs-3">
               @if(!empty($user->pic_path))
-              <img src="{{asset('01-progress.gif')}}" data-src="{{url($user->pic_path)}}" class="img-thumbnail" id="my-profile" alt="Foto de Perfil" width="120px" height="120px">
+              <img src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg" data-src="{{url($user->pic_path)}}" class="img-thumbnail" id="my-profile" alt="Foto de Perfil" width="120px" height="120px">
               @else
               @if(strtolower($user->gender) == 'male')
-                <img src="{{asset('01-progress.gif')}}" data-src="{{asset('images/user-male.png')}}" class="img-thumbnail" id="my-profile" alt="Foto de Perfil" width="120px" height="120px">
+                <img src="{{asset('01-progress.gif')}}" data-src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg" class="img-thumbnail" id="my-profile" alt="Foto de Perfil" width="120px" height="120px">
               @else
-                <img src="{{asset('01-progress.gif')}}" data-src="{{asset('images/user-female.png')}}" class="img-thumbnail" id="my-profile" alt="Foto de Perfil" width="120px" height="120px">
+                <img src="{{asset('01-progress.gif')}}" data-src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg" class="img-thumbnail" id="my-profile" alt="Foto de Perfil" width="120px" height="120px">
               @endif
               @endif
             </div>

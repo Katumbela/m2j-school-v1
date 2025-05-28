@@ -117,16 +117,16 @@
                             <ul class="dropdown-menu">
                                 @if(Auth::user()->role != 'master')
                                 <li>
-                                    <a href="{{url('user/'.Auth::user()->student_code)}}">Profile</a>
+                                    <a href="{{url('user/'.Auth::user()->student_code)}}">Perfil</a>   
                                 </li>
                                 @endif
                                 <li>
-                                    <a href="{{url('user/config/change_password')}}">Change Password</a>
+                                    <a href="{{url('user/config/change_password')}}">Alterar Senha</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
-                                        Logout
+                                        Sair
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -5,9 +5,9 @@
     <img src="{{asset('01-progress.gif')}}" data-src="{{url($user->pic_path)}}" class="img-thumbnail" id="my-profile" alt="Foto de Perfil" width="100%">
     @else
     @if(strtolower($user->gender) == 'male')
-    <img src="{{asset('01-progress.gif')}}" data-src="{{asset('https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg')}}" class="img-thumbnail" width="100%">
-    @else
     <img src="{{asset('01-progress.gif')}}" data-src="{{asset('https://hoteltopic.com/wp-content/uploads/2018/02/female-user-icon-7.png')}}" class="img-thumbnail" width="100%">
+    @else
+    <img src="{{asset('01-progress.gif')}}" data-src="{{asset('https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg')}}" class="img-thumbnail" width="100%">
     @endif
     @endif
     @if(\Auth::user()->role == 'admin')
@@ -78,9 +78,9 @@
               <img src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg" data-src="{{url($user->pic_path)}}" class="img-thumbnail" id="my-profile" alt="Foto de Perfil" width="120px" height="120px">
               @else
               @if(strtolower($user->gender) == 'male')
-              <img src="{{asset('01-progress.gif')}}" data-src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg" class="img-thumbnail" id="my-profile" alt="Foto de Perfil" width="120px" height="120px">
-              @else
               <img src="{{asset('01-progress.gif')}}" data-src="https://hoteltopic.com/wp-content/uploads/2018/02/female-user-icon-7.png" class="img-thumbnail" id="my-profile" alt="Foto de Perfil" width="120px" height="120px">
+              @else
+              <img src="{{asset('01-progress.gif')}}" data-src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg" class="img-thumbnail" id="my-profile" alt="Foto de Perfil" width="120px" height="120px">
               @endif
               @endif
             </div>

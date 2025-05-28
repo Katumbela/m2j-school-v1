@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-2">
     @if(!empty($user->pic_path))
-    <img src="{{asset('01-progress.gif')}}" data-src="{{url($user->pic_path)}}" class="img-thumbnail" id="my-profile" alt="Profile Picture" width="100%">
+    <img src="{{asset('01-progress.gif')}}" data-src="{{url($user->pic_path)}}" class="img-thumbnail" id="my-profile" alt="Foto de Perfil" width="100%">
     @else
       @if(strtolower($user->gender) == 'male')
         <img src="{{asset('01-progress.gif')}}" data-src="{{asset('images/user-male.png')}}" class="img-thumbnail" width="100%">
@@ -22,11 +22,11 @@
   <div class="col-md-10" id="main-container">
     <h3>{{$user->name}} <span class="label label-danger">{{ucfirst($user->role)}}</span> <span class="label label-primary">{{ucfirst($user->gender)}}</span>
       @if ($user->role == 'teacher' && $user->section_id > 0)
-        <small>Class Teacher of Section: <span class="label label-info">{{ucfirst($user->section->section_number)}}</span></small>
+        <small>Professor da Seção: <span class="label label-info">{{ucfirst($user->section->section_number)}}</span></small>
       @endif
       
       @if($user->role == "student")
-       <button class="btn btn-xs btn-success pull-right" role="button" id="btnPrint"><i class="material-icons">print</i> Print Profile</button>
+       <button class="btn btn-xs btn-success pull-right" role="button" id="btnPrint"><i class="material-icons">print</i> Imprimir Perfil</button>
        <div class="visible-print-block" id="profile-content">
        <div class="row">
           <div class="col-md-12">
@@ -35,8 +35,8 @@
               <div style="font-size: 10px;">{{$user->section->class->school->about}}</div>
             </div>
             <div class="col-xs-4">
-              <h3>Student Profile</h3>
-              <div style="font-size: 10px;">Printing Date: {{Carbon\Carbon::now()->format('d/m/Y')}}</div>
+              <h3>Perfil do Estudante</h3>
+              <div style="font-size: 10px;">Data de Impressão: {{Carbon\Carbon::now()->format('d/m/Y')}}</div>
             </div>
           </div>
         </div>
@@ -44,30 +44,30 @@
         <div class="row">
           <div class="col-md-12">
             <p class="bg-primary" style="text-align:center;">
-              Academic Information
+              Informações Acadêmicas
             </p>
             <div class="col-xs-9">
               <table class="table">
                 <tr>
-                  <td>Student ID:</td>
+                  <td>ID do Estudante:</td>
                   <td>{{$user->student_code}}</td>
-                  <td>Student's Name:</td>
+                  <td>Nome do Estudante:</td>
                   <td>{{$user->name}}</td>
                 </tr>
                 <tr>
-                  <td>Class:</td>
+                  <td>Turma:</td>
                   <td>{{$user->section->class->class_number}}</td>
-                  <td>Section:</td>
+                  <td>Seção:</td>
                   <td>{{$user->section->section_number}}</td>
                 </tr>
                 <tr>
-                  <td>Session:</td>
+                  <td>Sessão:</td>
                   <td>{{$user->studentInfo['session'] ?? 'N/A'}}</td>
-                  <td>Version:</td>
+                  <td>Versão:</td>
                   <td>{{$user->studentInfo['version'] ?? 'N/A'}}</td>
                 </tr>
                 <tr>
-                  <td>Group:</td>
+                  <td>Grupo:</td>
                   <td>{{$user->studentInfo['group'] ?? 'N/A'}}</td>
                   <td colspan="2"></td>
                 </tr>
@@ -75,12 +75,12 @@
             </div>
             <div class="col-xs-3">
               @if(!empty($user->pic_path))
-              <img src="{{asset('01-progress.gif')}}" data-src="{{url($user->pic_path)}}" class="img-thumbnail" id="my-profile" alt="Profile Picture" width="120px" height="120px">
+              <img src="{{asset('01-progress.gif')}}" data-src="{{url($user->pic_path)}}" class="img-thumbnail" id="my-profile" alt="Foto de Perfil" width="120px" height="120px">
               @else
               @if(strtolower($user->gender) == 'male')
-                <img src="{{asset('01-progress.gif')}}" data-src="{{asset('images/user-male.png')}}" class="img-thumbnail" id="my-profile" alt="Profile Picture" width="120px" height="120px">
+                <img src="{{asset('01-progress.gif')}}" data-src="{{asset('images/user-male.png')}}" class="img-thumbnail" id="my-profile" alt="Foto de Perfil" width="120px" height="120px">
               @else
-                <img src="{{asset('01-progress.gif')}}" data-src="{{asset('images/user-female.png')}}" class="img-thumbnail" id="my-profile" alt="Profile Picture" width="120px" height="120px">
+                <img src="{{asset('01-progress.gif')}}" data-src="{{asset('images/user-female.png')}}" class="img-thumbnail" id="my-profile" alt="Foto de Perfil" width="120px" height="120px">
               @endif
               @endif
             </div>
@@ -89,74 +89,74 @@
         <div class="row">
           <div class="col-md-12">
             <p class="bg-primary" style="text-align:center;">
-              Personal details
+              Detalhes Pessoais
             </p>
             <div class="col-xs-12">
               <table class="table">
                 <tr>
                   <td>Email:</td>
                   <td>{{$user->email}}</td>
-                  <td>Contact Number</td>
+                  <td>Número de Contato</td>
                   <td>{{$user->phone_number}}</td>
                 </tr>
                 <tr>
-                  <td>Gender:</td>
+                  <td>Gênero:</td>
                   <td>{{$user->gender}}</td>
-                  <td>Blood Group:</td>
+                  <td>Grupo Sanguíneo:</td>
                   <td>{{$user->blood_group}}</td>
                 </tr>
                 <tr>
-                  <td>Nationality:</td>
+                  <td>Nacionalidade:</td>
                   <td>{{$user->nationality}}</td>
-                  <td>Birthday:</td>
+                  <td>Data de Nascimento:</td>
                   <td>{{$user->birthday ? Carbon\Carbon::parse($user->birthday)->format('d/m/Y') : 'N/A'}}</td>
                 </tr>
                 <tr>
-                  <td>Religion:</td>
+                  <td>Religião:</td>
                   <td>{{$user->studentInfo['religion'] ?? 'N/A'}}</td>
-                  <td>Father Name:</td>
+                  <td>Nome do Pai:</td>
                   <td>{{$user->studentInfo['father_name'] ?? 'N/A'}}</td>
                 </tr>
                 <tr>
-                  <td>Mother Name:</td>
+                  <td>Nome da Mãe:</td>
                   <td>{{$user->studentInfo['mother_name'] ?? 'N/A'}}</td>
-                  <td>Address:</td>
+                  <td>Endereço:</td>
                   <td>{{$user->address}}</td>
                 </tr>
                 <tr>
-                  <td>Phone Number:</td>
+                  <td>Número de Telefone:</td>
                   <td>{{$user->phone_number}}</td>
-                  <td>Father's Phone Number:</td>
+                  <td>Número do Telefone do Pai:</td>
                   <td>{{$user->studentInfo['father_phone_number'] ?? 'N/A'}}</td>
                 </tr>
                 <tr>
-                  <td>Father's National ID:</td>
+                  <td>ID Nacional do Pai:</td>
                   <td>{{$user->studentInfo['father_national_id'] ?? 'N/A'}}</td>
-                  <td>Father's Occupation:</td>
+                  <td>Ocupação do Pai:</td>
                   <td>{{$user->studentInfo['father_occupation'] ?? 'N/A'}}</td>
                 </tr>
                 <tr>
-                  <td>Father's Designation:</td>
+                  <td>Cargo do Pai:</td>
                   <td>{{$user->studentInfo['father_designation'] ?? 'N/A'}}</td>
-                  <td>Father's Annual Income:</td>
+                  <td>Renda Anual do Pai:</td>
                   <td>{{$user->studentInfo['father_annual_income'] ?? 'N/A'}}</td>
                 </tr>
                 <tr>
-                  <td>Mother's Phone Number:</td>
+                  <td>Número do Telefone da Mãe:</td>
                   <td>{{$user->studentInfo['mother_phone_number'] ?? 'N/A'}}</td>
-                  <td>Mother's National ID:</td>
+                  <td>ID Nacional da Mãe:</td>
                   <td>{{$user->studentInfo['mother_national_id'] ?? 'N/A'}}</td>
                 </tr>
                 <tr>
-                  <td>Mother's Occupation:</td>
+                  <td>Ocupação da Mãe:</td>
                   <td>{{$user->studentInfo['mother_occupation'] ?? 'N/A'}}</td>
-                  <td>Mother's Designation:</td>
+                  <td>Cargo da Mãe:</td>
                   <td>{{$user->studentInfo['mother_designation'] ?? 'N/A'}}</td>
                 </tr>
                 <tr>
-                  <td>Mother's Annual Income:</td>
+                  <td>Renda Anual da Mãe:</td>
                   <td>{{$user->studentInfo['mother_annual_income'] ?? 'N/A'}}</td>
-                  <td>About:</td>
+                  <td>Sobre:</td>
                   <td>{{$user->about}}</td>
                 </tr>
               </table>
@@ -185,86 +185,86 @@
       <tbody>
         <tr>
           @if($user->role == "student")
-          <td><b>Code:</b></td>
+          <td><b>Código:</b></td>
           <td>{{$user->student_code}}</td>
-          <td><b>Session:</b></td>
+          <td><b>Sessão:</b></td>
           <td>{{$user->studentInfo['session'] ?? 'N/A'}}</td>
           @else
-          <td><b>Code:</b></td>
+          <td><b>Código:</b></td>
           <td>{{$user->student_code}}</td>
-          <td><b>About:</b></td>
+          <td><b>Sobre:</b></td>
           <td>{{$user->about}}</td>
           @endif
         </tr>
         @if($user->role == "student")
         <tr>
-          <td><b>Class:</b></td>
+          <td><b>Turma:</b></td>
           <td>{{$user->section->class->class_number}}</td>
-          <td><b>Section:</b></td>
+          <td><b>Seção:</b></td>
           <td>{{$user->section->section_number}}</td>
         </tr>
         <tr>
-          <td><b>Version:</b></td>
+          <td><b>Versão:</b></td>
           <td>{{$user->studentInfo['version'] ?? 'N/A'}}</td>
-          <td><b>Blood Group:</b></td>
+          <td><b>Grupo Sanguíneo:</b></td>
           <td>{{$user->blood_group}}</td>
         </tr>
         <tr>
-          <td><b>Group:</b></td>
+          <td><b>Grupo:</b></td>
           <td>{{$user->studentInfo['group'] ?? 'N/A'}}</td>
-          <td><b>Birthday:</b></td>
+          <td><b>Data de Nascimento:</b></td>
           <td>{{$user->birthday ? Carbon\Carbon::parse($user->birthday)->format('d/m/Y') : 'N/A'}}</td>
         </tr>
         @endif
         <tr>
-          <td><b>Nationality:</b></td>
+          <td><b>Nacionalidade:</b></td>
           <td>{{$user->nationality}}</td>
-          <td><b>Religion:</b></td>
+          <td><b>Religião:</b></td>
           <td>{{$user->studentInfo['religion'] ?? 'N/A'}}</td>
         </tr>
         @if($user->role == "student")
         <tr>
-          <td><b>Father Name:</b></td>
+          <td><b>Nome do Pai:</b></td>
           <td>{{$user->studentInfo['father_name'] ?? 'N/A'}}</td>
-          <td><b>Mother Name:</b></td>
+          <td><b>Nome da Mãe:</b></td>
           <td>{{$user->studentInfo['mother_name'] ?? 'N/A'}}</td>
         </tr>
         @endif
         <tr>
-          <td><b>Address:</b></td>
+          <td><b>Endereço:</b></td>
           <td>{{$user->address}}</td>
-          <td><b>Phone Number:</b></td>
+          <td><b>Número de Telefone:</b></td>
           <td>{{$user->phone_number}}</td>
         </tr>
         @if($user->role == "student")
         <tr>
-          <td><b>Father's Phone Number:</b></td>
+          <td><b>Número do Telefone do Pai:</b></td>
           <td>{{$user->studentInfo['father_phone_number'] ?? 'N/A'}}</td>
-          <td><b>Father's National ID:</b></td>
+          <td><b>ID Nacional do Pai:</b></td>
           <td>{{$user->studentInfo['father_national_id'] ?? 'N/A'}}</td>
         </tr>
         <tr>
-          <td><b>Father's Occupation:</b></td>
+          <td><b>Ocupação do Pai:</b></td>
           <td>{{$user->studentInfo['father_occupation'] ?? 'N/A'}}</td>
-          <td><b>Father's Designation:</b></td>
+          <td><b>Cargo do Pai:</b></td>
           <td>{{$user->studentInfo['father_designation'] ?? 'N/A'}}</td>
         </tr>
         <tr>
-          <td><b>Father's Annual Income:</b></td>
+          <td><b>Renda Anual do Pai:</b></td>
           <td>{{$user->studentInfo['father_annual_income'] ?? 'N/A'}}</td>
-          <td><b>Mother's Phone Number:</b></td>
+          <td><b>Número do Telefone da Mãe:</b></td>
           <td>{{$user->studentInfo['mother_phone_number'] ?? 'N/A'}}</td>
         </tr>
         <tr>
-          <td><b>Mother's National ID:</b></td>
+          <td><b>ID Nacional da Mãe:</b></td>
           <td>{{$user->studentInfo['mother_national_id'] ?? 'N/A'}}</td>
-          <td><b>Mother's Occupation:</b></td>
+          <td><b>Ocupação da Mãe:</b></td>
           <td>{{$user->studentInfo['mother_occupation'] ?? 'N/A'}}</td>
         </tr>
         <tr>
-          <td><b>Mother's Designation:</b></td>
+          <td><b>Cargo da Mãe:</b></td>
           <td>{{$user->studentInfo['mother_designation'] ?? 'N/A'}}</td>
-          <td><b>Mother's Annual Income:</b></td>
+          <td><b>Renda Anual da Mãe:</b></td>
           <td>{{$user->studentInfo['mother_annual_income'] ?? 'N/A'}}</td>
         </tr>
         @endif

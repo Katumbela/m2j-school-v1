@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'All Classes and Sections')
+@section('title', 'Todas as Turmas e Seções')
 
 @section('content')
 <style>
@@ -14,7 +14,7 @@
             @include('layouts.leftside-menubar')
         </div>
         <div class="col-md-10" id="main-container">
-            <h2>All Classes and Sections</h2>
+            <h2>Todas as Turmas e Seções</h2>
             <div class="panel panel-default" id="cls-sec">
               @if(count($classes) > 0)
                 @foreach ($classes as $class)
@@ -25,11 +25,11 @@
                                         <a class="panel-title collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$class->id}}" aria-expanded="false" aria-controls="collapse{{$class->id}}">{{$class->class_number}} {{ucfirst($class->group)}}</a>
                                     </div>
                                     <div class="col-md-4">
-                                        <a class="panel-title collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$class->id}}" aria-expanded="false" aria-controls="collapse{{$class->id}}"><small><b>Click to view all Sections under this Class <i class="material-icons">keyboard_arrow_down</i></b></small></a>
+                                        <a class="panel-title collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$class->id}}" aria-expanded="false" aria-controls="collapse{{$class->id}}"><small><b>Clique para ver todas as Seções desta Turma <i class="material-icons">keyboard_arrow_down</i></b></small></a>
                                     </div>
                                     @if(isset($_GET['course']) && $_GET['course'] == 1)
                                     <div class="col-md-4">
-                                        <a role="button" class="btn btn-info btn-xs" href="{{url('academic/syllabus')}}"><i class="material-icons">visibility</i> View Syllabus for this Class</a>
+                                        <a role="button" class="btn btn-info btn-xs" href="{{url('academic/syllabus')}}"><i class="material-icons">visibility</i> Ver Programa desta Turma</a>
                                     </div>
                                     @endif
                                 </div>
@@ -39,16 +39,16 @@
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Section Name</th>
+                                            <th>Nome da Seção</th>
                                             @if(isset($_GET['att']) && $_GET['att'] == 1)
-                                            <th>View Today's Attendance</th>
-                                            <th>View Each Student's Attendance</th>
-                                            <th>Give Attendance</th>
+                                            <th>Ver Frequência de Hoje</th>
+                                            <th>Ver Frequência de Cada Estudante</th>
+                                            <th>Registrar Frequência</th>
                                             @endif
                                             @if(isset($_GET['course']) && $_GET['course'] == 1)
-                                            <th>View Courses</th>
-                                            <th>View Students</th>
-                                            <th>View Routines</th>
+                                            <th>Ver Cursos</th>
+                                            <th>Ver Estudantes</th>
+                                            <th>Ver Rotinas</th>
                                             @endif
                                         </tr>
                                     </thead>
@@ -63,12 +63,12 @@
                                                 @foreach ($exams as $ex)
                                                     @if ($ex->class_id == $class->id)
                                                         <td>
-                                                            <a role="button" class="btn btn-primary btn-xs" href="{{url('attendances/'.$section->id.'/0/'.$ex->exam_id)}}"><i class="material-icons">visibility</i> View Today's Attendance</a>
+                                                            <a role="button" class="btn btn-primary btn-xs" href="{{url('attendances/'.$section->id.'/0/'.$ex->exam_id)}}"><i class="material-icons">visibility</i> Ver Frequência de Hoje</a>
                                                         </td>
                                                     @endif
                                                 @endforeach
                                             <td>
-                                                <a role="button" class="btn btn-danger btn-xs" href="{{url('attendances/'.$section->id)}}"><i class="material-icons">visibility</i> View Each Student's Attendance</a>
+                                                <a role="button" class="btn btn-danger btn-xs" href="{{url('attendances/'.$section->id)}}"><i class="material-icons">visibility</i> Ver Frequência de Cada Estudante</a>
                                             </td>
                                             <td>
                                                 <?php
@@ -79,23 +79,23 @@
                                                         <?php
                                                             $ce = 1;
                                                         ?>
-                                                        <a role="button" class="btn btn-info btn-xs" href="{{url('attendances/'.$section->id.'/0/'.$ex->exam_id)}}"><i class="material-icons">spellcheck</i> Take Attendance</a>
+                                                        <a role="button" class="btn btn-info btn-xs" href="{{url('attendances/'.$section->id.'/0/'.$ex->exam_id)}}"><i class="material-icons">spellcheck</i> Registrar Frequência</a>
                                                     @endif
                                                 @endforeach
                                                 @if($ce == 0)
-                                                    Assign Class Under Exam
+                                                    Atribuir Turma ao Exame
                                                 @endif
                                             </td>
                                             @endif
                                             @if(isset($_GET['course']) && $_GET['course'] == 1)
                                             <td>
-                                                <a role="button" class="btn btn-info btn-xs" href="{{url('courses/0/'.$section->id)}}"><i class="material-icons">visibility</i> View Courses under this section</a>
+                                                <a role="button" class="btn btn-info btn-xs" href="{{url('courses/0/'.$section->id)}}"><i class="material-icons">visibility</i> Ver Cursos desta seção</a>
                                             </td>
                                             <td>
-                                                <a role="button" class="btn btn-danger btn-xs" href="{{url('section/students/'.$section->id.'?section=1')}}"><i class="material-icons">visibility</i> View Students of this section</a>
+                                                <a role="button" class="btn btn-danger btn-xs" href="{{url('section/students/'.$section->id.'?section=1')}}"><i class="material-icons">visibility</i> Ver Estudantes desta seção</a>
                                             </td>
                                             <td>
-                                                <a role="button" class="btn btn-primary btn-xs" href="{{url('academic/routine')}}"><i class="material-icons">visibility</i> View Routines for this section</a>
+                                                <a role="button" class="btn btn-primary btn-xs" href="{{url('academic/routine')}}"><i class="material-icons">visibility</i> Ver Rotinas desta seção</a>
                                             </td>
                                             @endif
                                             </tr>
@@ -109,7 +109,7 @@
                 @endforeach
               @else
                 <div class="panel-body">
-                    No Related Data Found.
+                    Nenhum Dado Relacionado Encontrado.
                 </div>
               @endif
             </div>

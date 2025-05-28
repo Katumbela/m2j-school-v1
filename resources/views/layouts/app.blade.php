@@ -19,8 +19,18 @@
             top: 0px;
             width: 100%;
             height: 100%;
-            z-index: 999999;
-            background: url({{asset('01-progress.gif')}}) 50% 50% no-repeat rgb(249,249,249);
+            z-index: 999999; 
+            background-color: #fff; 
+        }
+
+        .loader img {
+            width: 10rem;
+            height: 10rem;
+            border-radius: 10%; 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     </style>
 
@@ -35,7 +45,9 @@
 </head>
 
 <body>
-    <div class="loader"></div>
+    <div class="loader">
+        <img src="{{asset('01-progress.gif')}}" alt="">
+    </div>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">

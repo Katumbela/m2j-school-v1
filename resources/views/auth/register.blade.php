@@ -3,7 +3,19 @@
 @section('title', 'Register')
 
 @section('content')
+<!-- CSS files -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.21.0/css/jquery.fileupload.min.css" rel="stylesheet">
+
+<!-- jQuery and jQuery UI -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+<!-- jQuery File Upload plugin files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.21.0/js/vendor/jquery.ui.widget.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.21.0/js/jquery.iframe-transport.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.21.0/js/jquery.fileupload.min.js"></script>
+
 <div class="container{{ (\Auth::user()->role == 'master')? '' : '-fluid' }}">
     <div class="row">
       @if(\Auth::user()->role != 'master')
@@ -597,7 +609,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="button" id="registerBtn" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary">
                                     Register
                                 </button>
                             </div>
@@ -620,9 +632,6 @@
       viewMode: "years",
       minViewMode: "years"
     });
-  });
-  $('#registerBtn').click(function(){
-      $("form").submit();
   });
 </script>
 @endsection

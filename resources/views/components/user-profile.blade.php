@@ -5,9 +5,9 @@
     <img src="{{asset('01-progress.gif')}}" data-src="{{url($user->pic_path)}}" class="img-thumbnail" id="my-profile" alt="Profile Picture" width="100%">
     @else
       @if(strtolower($user->gender) == 'male')
-        <img src="{{asset('01-progress.gif')}}" data-src="https://png.icons8.com/dusk/200/000000/user.png" class="img-thumbnail" width="100%">
+        <img src="{{asset('01-progress.gif')}}" data-src="{{asset('images/user-male.png')}}" class="img-thumbnail" width="100%">
       @else
-        <img src="{{asset('01-progress.gif')}}" data-src="https://png.icons8.com/dusk/200/000000/user-female.png" class="img-thumbnail" width="100%">
+        <img src="{{asset('01-progress.gif')}}" data-src="{{asset('images/user-female.png')}}" class="img-thumbnail" width="100%">
       @endif
     @endif
     @if(\Auth::user()->role == 'admin')
@@ -78,9 +78,9 @@
               <img src="{{asset('01-progress.gif')}}" data-src="{{url($user->pic_path)}}" class="img-thumbnail" id="my-profile" alt="Profile Picture" width="120px" height="120px">
               @else
               @if(strtolower($user->gender) == 'male')
-                <img src="{{asset('01-progress.gif')}}" data-src="https://png.icons8.com/dusk/200/000000/user.png" class="img-thumbnail" id="my-profile" alt="Profile Picture" width="120px" height="120px">
+                <img src="{{asset('01-progress.gif')}}" data-src="{{asset('images/user-male.png')}}" class="img-thumbnail" id="my-profile" alt="Profile Picture" width="120px" height="120px">
               @else
-                <img src="{{asset('01-progress.gif')}}" data-src="https://png.icons8.com/dusk/200/000000/user-female.png" class="img-thumbnail" id="my-profile" alt="Profile Picture" width="120px" height="120px">
+                <img src="{{asset('01-progress.gif')}}" data-src="{{asset('images/user-female.png')}}" class="img-thumbnail" id="my-profile" alt="Profile Picture" width="120px" height="120px">
               @endif
               @endif
             </div>

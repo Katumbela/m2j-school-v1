@@ -29,6 +29,10 @@ class ResultOutput()
     }
 }
 */
+ 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -184,8 +188,8 @@ Route::middleware(['admin','auth'])->group(function (){
   Route::post('school/theme','SchoolController@changeTheme');
   Route::get('register/student', 'UserController@redirectToRegisterStudent');
   Route::get('register/teacher', function(){
-    $departments = \App\Department::where('school_id',\Auth::user()->school_id)->get();
-    $classes = \App\Myclass::where('school_id',\Auth::user()->school->id)->pluck('id');
+    $departments = \App\Department::where('school_id',Auth::user()->school_id)->get();
+    $classes = \App\Myclass::where('school_id',Auth::user()->school_id)->pluck('id');
     $sections = \App\Section::with('class')->whereIn('class_id',$classes)->get();
     session([
       'register_role' => 'teacher',

@@ -16,11 +16,8 @@
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.4/sweetalert2.all.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.21.0/js/vendor/jquery.ui.widget.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.21.0/js/jquery.iframe-transport.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.2/jquery.fileupload.min.js"></script>
 <script>
-$(function () {
+jQuery(document).ready(function($) {
     var jqXHR = null;
     var uploadButton = $('<button/>')
             .addClass('btn btn-primary btn-sm')
@@ -61,38 +58,51 @@ $(function () {
                             data.context.text('File Upload has been canceled');
                         });
                         @if($upload_type != 'profile')
-                            data.formData = {upload_type: '{{$upload_type}}',title: $('#upload-title').val()};
+                            data.formData = {
+                                upload_type: '{{$upload_type}}',
+                                title: $('#upload-title').val(),
+                                _token: '{{ csrf_token() }}'
+                            };
                         @else
-                            data.formData = {upload_type: '{{$upload_type}}',user_id: $('#userIdPic').val()};
+                            data.formData = {
+                                upload_type: '{{$upload_type}}',
+                                user_id: $('#userIdPic').val(),
+                                _token: '{{ csrf_token() }}'
+                            };
                         @endif
                         data.submit().always(function () {
                             $this.remove();
                         });
                     }
             });
+
+    // Initialize fileupload
     $('#fileupload').fileupload({
         dataType: 'json',
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
         add: function (e, data) {
             console.log(data);
             var file = data.originalFiles[0];
             console.log(file);
             if (file) {
                 $('#fileInfo').remove();
-                        data.context = $('<div/>').attr('id', 'fileInfo').appendTo('#my_upload');
-                        var node = $('<p/>')
-                            .append($('<span/>').text(file.name)).append(uploadButton.clone(true).data(data));
-                        node.appendTo(data.context);
+                data.context = $('<div/>').attr('id', 'fileInfo').appendTo('#my_upload');
+                var node = $('<p/>')
+                    .append($('<span/>').text(file.name)).append(uploadButton.clone(true).data(data));
+                node.appendTo(data.context);
             }
         },
         progress: function (e, data) {
             var progress = 0;
             progress = parseInt(data.loaded / data.total * 100, 10);
             console.log('progress'+progress);
-                $('.progress-bar').attr(
-                    'aria-valuenow',
-                    progress
-                ).css('width', progress + '%');
-                $('#up-prog-info').text(progress + "% uploaded");
+            $('.progress-bar').attr(
+                'aria-valuenow',
+                progress
+            ).css('width', progress + '%');
+            $('#up-prog-info').text(progress + "% uploaded");
         }
     })
     .on('fileuploaddone', function (e, data) {
@@ -112,10 +122,10 @@ $(function () {
         }
     })
     .on('fileuploadfail', function (e, data) {
-            data.context.text('File Upload has been cancelled');
-            var error = data['jqXHR']['responseJSON']['error'];
-            $('#errorAlert').text(error);
-            console.log(data['jqXHR']['responseJSON']);
+        data.context.text('File Upload has been cancelled');
+        var error = data['jqXHR']['responseJSON']['error'];
+        $('#errorAlert').text(error);
+        console.log(data['jqXHR']['responseJSON']);
     });
 });
 {{--

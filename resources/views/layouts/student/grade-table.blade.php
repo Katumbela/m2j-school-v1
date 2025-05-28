@@ -162,18 +162,18 @@
         var tableContent = $('#table-content{{$exam->id}}').html();
         var printWindow = window.open('', '', 'height=720,width=1280');
         printWindow.document.write('<html><head><title>Boletim</title>');
-        printWindow.document.write('<link href="{{url('css/app.css')}}" rel="stylesheet">');
+        printWindow.document.write('<link href="' + '{{url("css/app.css")}}' + '" rel="stylesheet">');
         printWindow.document.write('</head><body>');
-        printWindow.document.write('<div class="container-fluid"><div class="col-md-12"><h2 style="text-align:center;">{{Auth::user()->school->name}}</h2><h4 style="text-align:center;">Boletim</h4>');
-        printWindow.document.write('<h4>Nome do Aluno: {{$studentName}}</h4>');
-        printWindow.document.write('<h4>Turma: {{$classNumber}} <span>Seção: {{$sectionNumber}}</span></h4>');
-        printWindow.document.write('<h3>Nome da Prova: {{$exam->exam_name}}</h3>');
+        printWindow.document.write('<div class="container-fluid"><div class="col-md-12"><h2 style="text-align:center;">' + '{{Auth::user()->school->name}}' + '</h2><h4 style="text-align:center;">Boletim</h4>');
+        printWindow.document.write('<h4>Nome do Aluno: ' + '{{$studentName}}' + '</h4>');
+        printWindow.document.write('<h4>Turma: ' + '{{$classNumber}}' + ' <span>Seção: ' + '{{$sectionNumber}}' + '</span></h4>');
+        printWindow.document.write('<h3>Nome da Prova: ' + '{{$exam->exam_name}}' + '</h3>');
         printWindow.document.write(tableContent);
         printWindow.document.write('</div></div></body></html>');
         printWindow.document.close();
         printWindow.print();
-      });
-    </script>
+    });
+</script>
 @endforeach
 @else
   Nenhum dado relacionado

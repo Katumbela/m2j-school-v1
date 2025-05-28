@@ -57,10 +57,8 @@ class AttendanceController extends Controller
           $student = User::with('section')->where('id',$student_id)->first();
           $exam = \App\ExamForClass::where('class_id',$student->section->class->id)->first();
           
-          if(count($exam) == 1)
-            $exId = $exam->exam_id;
-          else
-            $exId = 0;
+          $exId = ($exam && $exam->exam_id) ? $exam->exam_id : 0;
+          
           $attendances = Attendance::with(['student', 'section'])
                       ->where('student_id', $student_id)
                       ->where('exam_id', $exId)
@@ -73,15 +71,14 @@ class AttendanceController extends Controller
     public function adjust($student_id){
       $student = User::with('section')->where('id',$student_id)->first();
       $exam = \App\ExamForClass::where('class_id',$student->section->class->id)->first();
-      if(count($exam) == 1)
-        $exId = $exam->exam_id;
-      else
-        $exId = 0;
+      
+      $exId = ($exam && $exam->exam_id) ? $exam->exam_id : 0;
+      
       $attendances = Attendance::with(['student', 'section'])
-                      ->where('student_id', $student_id)
-                      ->where('present',0)
-                      ->where('exam_id', $exId)
-                      ->get();
+                  ->where('student_id', $student_id)
+                  ->where('present',0)
+                  ->where('exam_id', $exId)
+                  ->get();
       return view('attendance.adjust',['attendances'=>$attendances,'student_id'=>$student_id]);
     }
 

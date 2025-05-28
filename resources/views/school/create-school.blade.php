@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Manage Schools')
+@section('title', 'Gerenciar Escolas')
 
 @section('content')
 <div class="container-fluid">
@@ -29,28 +29,28 @@
               <div class="panel-body table-responsive">
                 @if(\Auth::user()->role == 'master')
                   @include('layouts.master.create-school-form')
-                  <h2>School List</h2>
+                  <h2>Lista de Escolas</h2>
                 @endif
-                <h4>Manage Departments, Classs, Sections, Student Promotion, Course</h4>
+                <h4>Gerenciar Departamentos, Turmas, Seções, Promoção de Estudantes, Cursos</h4>
                 <table class="table table-condensed" style="{{(\Auth::user()->role == 'master')?'':'width:800px'}}">
                   <thead>
                     <tr>
                       @if(\Auth::user()->role == 'master')
                         <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Code</th>
-                        <th scope="col">About</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">Sobre</th>
                       @endif
                       @if(\Auth::user()->role == 'admin')
                         {{--<th scope="col">Theme</th>--}}
-                        <th scope="col">Department</th>
-                        <th scope="col">Classes</th>
+                        <th scope="col">Departamento</th>
+                        <th scope="col">Turmas</th>
                         {{-- <th scope="col">Students</th>
                         <th scope="col">Teachers</th> --}}
                       @endif
                       @if(\Auth::user()->role == 'master')
                         <th scope="col">+Admin</th>
-                        <th scope="col">View Admins</th>
+                        <th scope="col">Ver Admins</th>
                       @endif
                     </tr>
                   </thead>
@@ -69,7 +69,7 @@
                           @include('layouts.master.theme-form')
                         </td>--}}
                       <td>
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#departmentModal">+ Create Department</button>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#departmentModal">+ Criar Departamento</button>
                         <!-- Modal -->
                                   <div class="modal fade" id="departmentModal" tabindex="-1" role="dialog" aria-labelledby="departmentModalLabel">
                                     <div class="modal-dialog" role="document">
@@ -78,33 +78,33 @@
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
-                                          <h4 class="modal-title" id="departmentModalLabel">Create Department</h4>
+                                          <h4 class="modal-title" id="departmentModalLabel">Criar Departamento</h4>
                                         </div>
                                         <div class="modal-body">
                                           <form class="form-horizontal" action="{{url('school/add-department')}}" method="post">
                                             {{csrf_field()}}
                                             <div class="form-group">
-                                              <label for="department_name" class="col-sm-2 control-label">Department Name</label>
+                                              <label for="department_name" class="col-sm-2 control-label">Nome do Departamento</label>
                                               <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="department_name" name="department_name" placeholder="English, Mathematics,...">
+                                                <input type="text" class="form-control" id="department_name" name="department_name" placeholder="Português, Matemática,...">
                                               </div>
                                             </div>
                                             <div class="form-group">
                                               <div class="col-sm-offset-2 col-sm-10">
-                                                <button type="submit" class="btn btn-danger btn-sm">Submit</button>
+                                                <button type="submit" class="btn btn-danger btn-sm">Enviar</button>
                                               </div>
                                             </div>
                                           </form>
                                         </div>
                                         <div class="modal-footer">
-                                          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                                          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Fechar</button>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
                       </td>
                       <td>
-                        <a href="#collapse{{($loop->index + 1)}}" role="button" class="btn btn-danger btn-sm" data-toggle="collapse" aria-expanded="false" aria-controls="collapse{{($loop->index + 1)}}"><i class="material-icons">class</i> Manage Class, Section
+                        <a href="#collapse{{($loop->index + 1)}}" role="button" class="btn btn-danger btn-sm" data-toggle="collapse" aria-expanded="false" aria-controls="collapse{{($loop->index + 1)}}"><i class="material-icons">class</i> Gerenciar Turma, Seção
                         </a>
                       </td>
                       {{-- <td>
@@ -116,10 +116,10 @@
                       @endif
                       @if(\Auth::user()->role == 'master')
                         <td>
-                          <a class="btn btn-danger btn-sm" href="{{url('register/admin/'.$school->id.'/'.$school->code)}}"><small>+ Create Admin</small></a>
+                          <a class="btn btn-danger btn-sm" href="{{url('register/admin/'.$school->id.'/'.$school->code)}}"><small>+ Criar Admin</small></a>
                         </td>
                         <td>
-                          <a href="{{url('school/admin-list/'.$school->id)}}"><small>View Admins</small></a>
+                          <a href="{{url('school/admin-list/'.$school->id)}}"><small>Ver Admins</small></a>
                         </td>
                       @endif
                     </tr>
@@ -127,12 +127,12 @@
                     <tr class="collapse" id="collapse{{($loop->index + 1)}}" aria-labelledby="heading{{($loop->index + 1)}}" aria-expanded="false">
                       <td colspan="12">
                         @include('layouts.master.add-class-form')
-                          <div><small>Click Class to View All Sections</small></div>
+                          <div><small>Clique na Turma para Ver Todas as Seções</small></div>
                             <div class="row">
                               @foreach($classes as $class)
                                 @if($class->school_id == $school->id)
                                 <div class="col-sm-3">
-                                  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal{{$class->id}}" style="margin-top: 5%;">Manage {{$class->class_number}} {{!empty($class->group)? '- '.$class->group:''}}</button>
+                                  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal{{$class->id}}" style="margin-top: 5%;">Gerenciar {{$class->class_number}} {{!empty($class->group)? '- '.$class->group:''}}</button>
                                   <!-- Modal -->
                                   <div class="modal fade" id="myModal{{$class->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                     <div class="modal-dialog modal-lg" role="document">
@@ -141,16 +141,16 @@
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
-                                          <h4 class="modal-title" id="myModalLabel">All Sections of Class {{$class->class_number}}</h4>
+                                          <h4 class="modal-title" id="myModalLabel">Todas as Seções da Turma {{$class->class_number}}</h4>
                                         </div>
                                         <div class="modal-body">
                                           <ul class="list-group">
                                             @foreach($sections as $section)
                                               @if($section->class_id == $class->id)
-                                              <li class="list-group-item">Section {{$section->section_number}} &nbsp;
-                                                <a class="btn btn-xs btn-warning" href="{{url('courses/0/'.$section->id)}}">View All Assigned Courses</a>
+                                              <li class="list-group-item">Seção {{$section->section_number}} &nbsp;
+                                                <a class="btn btn-xs btn-warning" href="{{url('courses/0/'.$section->id)}}">Ver Todos os Cursos Atribuídos</a>
                                                 <span class="pull-right"> &nbsp;&nbsp;
-                                                  <a  class="btn btn-xs btn-success" href="{{url('school/promote-students/'.$section->id)}}">+ Promote Students</a>
+                                                  <a  class="btn btn-xs btn-success" href="{{url('school/promote-students/'.$section->id)}}">+ Promover Estudantes</a>
                                                   {{-- &nbsp;<a class="btn btn-xs btn-primary" href="{{url('register/student/'.$section->id)}}">+ Register Student</a> --}}
                                                 </span>
                                                 @include('layouts.master.add-course-form')
@@ -161,7 +161,7 @@
                                           @include('layouts.master.create-section-form')
                                         </div>
                                         <div class="modal-footer">
-                                          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                                          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Fechar</button>
                                         </div>
                                       </div>
                                     </div>
@@ -179,29 +179,29 @@
                 </table>
                 <br>
                 @if(\Auth::user()->role == 'admin' && \Auth::user()->school_id == $school->id)
-                <h4>Add Users</h4>
+                <h4>Adicionar Usuários</h4>
                 <table class="table table-condensed" style="width:600px">
                   <thead>
                     <tr>
-                        <th scope="col">+Student</th>
-                        <th scope="col">+Teacher</th>
-                        <th scope="col">+Accountant</th>
-                        <th scope="col">+Librarian</th>
+                        <th scope="col">+Estudante</th>
+                        <th scope="col">+Professor</th>
+                        <th scope="col">+Contador</th>
+                        <th scope="col">+Bibliotecário</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>
-                          <a class="btn btn-info btn-sm" href="{{url('register/student')}}">+ Add Student</a>
+                          <a class="btn btn-info btn-sm" href="{{url('register/student')}}">+ Adicionar Estudante</a>
                         </td>
                         <td>
-                          <a class="btn btn-success btn-sm" href="{{url('register/teacher')}}">+ Add Teacher</a>
+                          <a class="btn btn-success btn-sm" href="{{url('register/teacher')}}">+ Adicionar Professor</a>
                         </td>
                         <td>
-                          <a class="btn btn-default btn-sm" href="{{url('register/accountant')}}">+ Add Accountant</a>
+                          <a class="btn btn-default btn-sm" href="{{url('register/accountant')}}">+ Adicionar Contador</a>
                         </td>
                         <td>
-                          <a class="btn btn-warning btn-sm" href="{{url('register/librarian')}}">+ Add Librarian</a>
+                          <a class="btn btn-warning btn-sm" href="{{url('register/librarian')}}">+ Adicionar Bibliotecário</a>
                         </td>
                     </tr>
                   </tbody>
@@ -211,17 +211,17 @@
                 <table class="table table-condensed" style="width:400px">
                   <thead>
                     <tr>
-                      <th scope="col">+Notice</th>
-                      <th scope="col">+Event</th>
+                      <th scope="col">+Aviso</th>
+                      <th scope="col">+Evento</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>
-                          <a class="btn btn-info btn-sm" href="{{ url('academic/notice') }}"><i class="material-icons">developer_board</i> Upload Notice</a>
+                          <a class="btn btn-info btn-sm" href="{{ url('academic/notice') }}"><i class="material-icons">developer_board</i> Upload de Aviso</a>
                         </td>
                         <td>
-                          <a class="btn btn-info btn-sm" href="{{ url('academic/event') }}"><i class="material-icons">developer_board</i> Upload Event</a>
+                          <a class="btn btn-info btn-sm" href="{{ url('academic/event') }}"><i class="material-icons">developer_board</i> Upload de Evento</a>
                         </td>
                     </tr>
                   </tbody>

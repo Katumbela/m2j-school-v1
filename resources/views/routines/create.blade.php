@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Add Routine')
+@section('title', 'Adicionar Rotina')
 
 @section('content')
 <div class="container-fluid">
@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-10" id="main-container">
             <div class="panel panel-default">
-                <div class="page-panel-title">Add Routine
+                <div class="page-panel-title">Adicionar Rotina
               </div>
                 <div class="panel-body">
                     @if (session('status'))

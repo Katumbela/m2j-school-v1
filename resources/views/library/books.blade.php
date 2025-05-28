@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'All Books')
+@section('title', 'Todos os Livros')
 @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-10" id="main-container">
             <div class="panel panel-default">
-                <div class="page-panel-title">All Books</div>
+                <div class="page-panel-title">Todos os Livros</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -17,7 +17,7 @@
                         </div>
                     @endif
 
-                    @component('components.all-books',['books'=>$books])
+                    @component('components.issued-books-list',['books'=>$books])
                     @endcomponent
                 </div>
             </div>

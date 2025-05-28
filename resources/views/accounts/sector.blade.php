@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Account Sectors')
+@section('title', 'Setores de Conta')
 @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-10" id="main-container">
             <div class="panel panel-default">
-                <div class="page-panel-title">Account Sectors</div>
+                <div class="page-panel-title">Setores de Conta</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -19,10 +19,10 @@
                     <form class="form-horizontal" action="{{url('/accounts/create-sector')}}" method="post">
                       {{ csrf_field() }}
                       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                          <label for="name" class="col-md-4 control-label">Sector Name</label>
+                          <label for="name" class="col-md-4 control-label">Nome do Setor</label>
 
                           <div class="col-md-6">
-                              <input id="name" type="text" class="form-control" name="name" value="{{ (!empty($sector->name))?$sector->name:old('name') }}" placeholder="Sector Name" required>
+                              <input id="name" type="text" class="form-control" name="name" value="{{ (!empty($sector->name))?$sector->name:old('name') }}" placeholder="Nome do Setor" required>
 
                               @if ($errors->has('name'))
                                   <span class="help-block">
@@ -32,16 +32,16 @@
                           </div>
                       </div>
                       <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-                          <label for="type" class="col-md-4 control-label">Sector Type</label>
+                          <label for="type" class="col-md-4 control-label">Tipo de Setor</label>
 
                           <div class="col-md-6">
                               <select  class="form-control" name="type">
                                   @if(!empty($sector->type))
-                                      {!! Form::select('type',['income'=>'income','expense'=>'expense'],$sector->type,['class'=>'form-control','required'=>'true'])
+                                      {!! Form::select('type',['income'=>'Receita','expense'=>'Despesa'],$sector->type,['class'=>'form-control','required'=>'true'])
                                     !!}
                                   @else
-                                    <option value="income">Income</option>
-                                    <option value="expense">Expense</option>
+                                    <option value="income">Receita</option>
+                                    <option value="expense">Despesa</option>
                                   @endif
                               </select>
 
@@ -54,7 +54,7 @@
                       </div>
                       <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-8">
-                          <button type="submit" class="btn btn-danger">Save</button>
+                          <button type="submit" class="btn btn-danger">Salvar</button>
                         </div>
                       </div>
                     </form>
@@ -89,7 +89,7 @@
 			type: 'line',
 			data: {
 				datasets: [{
-                    label: 'Income',
+                    label: 'Receita',
 					backgroundColor: color(window.chartColors.green).alpha(0.5).rgbString(),
 					borderColor: window.chartColors.green,
 					fill: false,
@@ -100,7 +100,7 @@
                         },
                         @endforeach]
                 },{
-                    label: 'Expense',
+                    label: 'Despesa',
 					backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
 					borderColor: window.chartColors.red,
 					fill: false,
@@ -115,7 +115,7 @@
 			options: {
 				title: {
                     display: true,
-					text: 'Income and Expense (In Taka) in Time Scale'
+					text: 'Receita e Despesa (Em Taka) na Escala de Tempo'
 				},
 				scales: {
 					xAxes: [{
@@ -126,13 +126,13 @@
 						},
 						scaleLabel: {
 							display: true,
-							labelString: 'Date'
+							labelString: 'Data'
 						}
 					}],
 					yAxes: [{
 						scaleLabel: {
 							display: true,
-							labelString: 'Money'
+							labelString: 'Dinheiro'
 						}
 					}]
 				},

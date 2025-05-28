@@ -4,14 +4,14 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Book Title</th>
-        <th scope="col">Book Code</th>
-        <th scope="col">Type</th>
-        <th scope="col">Borrower Name</th>
-        <th scope="col">Borrower Code</th>
-        <th scope="col">Issue Date</th>
-        <th scope="col">Return Date</th>
-        <th scope="col">Action</th>
+        <th scope="col">Título do Livro</th>
+        <th scope="col">Código do Livro</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Nome do Emprestador</th>
+        <th scope="col">Código do Emprestador</th>
+        <th scope="col">Data de Empréstimo</th>
+        <th scope="col">Data de Devolução</th>
+        <th scope="col">Ação</th>
       </tr>
     </thead>
     <tbody>
@@ -30,7 +30,7 @@
             {{csrf_field()}}
             <input type="hidden" name="issue_id" value="{{$book->id}}">
             <input type="hidden" name="book_code" value="{{$book->book_code}}">
-            <button class="btn btn-xs btn-success">Save as Returned</button>
+            <button class="btn btn-xs btn-success">Salvar como Devolvido</button>
           </form>
         </td>
       </tr>

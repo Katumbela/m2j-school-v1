@@ -1,7 +1,7 @@
 <div class="card text-white bg-info mb-3">
-    <div class="card-header">Information</div>
+    <div class="card-header">Informação</div>
     <div class="card-body">
-      An Examination represents a Semester. All Courses of a Semester belong to an Examination. So, all Quiz, Class Test, Assignment, Attendance, Written, Practical, etc. in a Course are subjected to that specific Examination.
+      Um Exame representa um Semestre. Todos os Cursos de um Semestre pertencem a um Exame. Assim, todos os Quizzes, Testes de Classe, Trabalhos, Frequência, Escritos, Práticos, etc. em um Curso estão sujeitos a esse Exame específico.
     </div>
 </div>
 {{$exams->links()}}
@@ -15,11 +15,11 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Examination Name</th>
-      <th scope="col">Notice Published</th>
-      <th scope="col">Result Published</th>
-      <th scope="col">Created At</th>
-      <th scope="col">Set Active</th>
+      <th scope="col">Nome do Exame</th>
+      <th scope="col">Aviso Publicado</th>
+      <th scope="col">Resultado Publicado</th>
+      <th scope="col">Criado Em</th>
+      <th scope="col">Definir Ativo</th>
     </tr>
   </thead>
   <tbody>
@@ -29,23 +29,23 @@
       <td scope="row">{{$exam->exam_name}}</td>
       <td scope="row">
         @if($exam->notice_published === 1)
-          Yes
+          Sim
         @else
           @if($exam->result_published === 1)
-            No
+            Não
           @else
             <span class="label label-danger checkbox-inline">
-              <input type="checkbox" name="notice_published" form="form{{$exam->id}}" /> Yes
+              <input type="checkbox" name="notice_published" form="form{{$exam->id}}" /> Sim
             </span>
           @endif
         @endif
       </td>
       <td scope="row">
         @if($exam->result_published === 1)
-          Yes
+          Sim
         @else
           <span class="label label-danger checkbox-inline">
-            <input type="checkbox" name="result_published" form="form{{$exam->id}}" /> Yes
+            <input type="checkbox" name="result_published" form="form{{$exam->id}}" /> Sim
           </span>
         @endif
       </td>
@@ -55,20 +55,20 @@
         @if($exam->active === 1)
           <span class="label label-success checkbox-inline">
             <input type="checkbox" name="active" form="form{{$exam->id}}" checked />
-              Active
+              Ativo
           </span>
         @else
           @if($exam->result_published === 1)
-            Completed
+            Concluído
           @else
             <span class="label label-danger checkbox-inline">
               <input type="checkbox" name="active" form="form{{$exam->id}}" />
-              Not Active
+              Não Ativo
             </span>
           @endif
         @endif
         @if($exam->result_published != 1)
-          <input type="submit" class="btn btn-info btn-xs" style="margin-left: 1%;" value="Save" form="form{{$exam->id}}"/>
+          <input type="submit" class="btn btn-info btn-xs" style="margin-left: 1%;" value="Salvar" form="form{{$exam->id}}"/>
         @endif
       </td>
     </tr>

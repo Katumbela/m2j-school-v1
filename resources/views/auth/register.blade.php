@@ -37,10 +37,10 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Full Name</label>
+                            <label for="name" class="col-md-4 control-label">Nome</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">E-mail</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
@@ -65,10 +65,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('phone_number') ? ' has-error' : '' }}">
-                            <label for="phone_number" class="col-md-4 control-label">Phone Number</label>
+                            <label for="phone_number" class="col-md-4 control-label">Número de Telefone</label>
 
                             <div class="col-md-6">
-                                <input id="phone_number" type="text" class="form-control" name="phone_number" value="{{ old('phone_number') }}">
+                                <input id="phone_number" type="text" class="form-control" name="phone_number" value="{{ old('phone_number') }}" required>
 
                                 @if ($errors->has('phone_number'))
                                     <span class="help-block">
@@ -79,7 +79,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-4 control-label">Senha</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
@@ -93,7 +93,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="password-confirm" class="col-md-4 control-label">Confirmar Senha</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -133,7 +133,7 @@
                         @endif
                         @if(session('register_role', 'teacher') == 'teacher')
                         <div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
-                            <label for="department" class="col-md-4 control-label">Department</label>
+                            <label for="department" class="col-md-4 control-label">Departamento</label>
 
                             <div class="col-md-6">
                                 <select id="department" class="form-control" name="department_id">
@@ -152,13 +152,13 @@
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('class_teacher') ? ' has-error' : '' }}">
-                            <label for="class_teacher" class="col-md-4 control-label">Class Teacher</label>
+                            <label for="class_teacher" class="col-md-4 control-label">Professor de Turma</label>
 
                             <div class="col-md-6">
                                 <select id="class_teacher" class="form-control" name="class_teacher_section_id">
-                                    <option selected="selected" value="0">Not Class Teacher</option>
+                                    <option selected="selected" value="0">Não é Professor de Turma</option>
                                     @foreach (session('register_sections') as $section)
-                                        <option value="{{$section->id}}">Section: {{$section->section_number}} Class: {{$section->class->class_number}}</option>
+                                        <option value="{{$section->id}}">Seção: {{$section->section_number}} Turma: {{$section->class->class_number}}</option>
                                     @endforeach
                                 </select>
 
@@ -171,7 +171,7 @@
                         </div>
                         @endif
                         <div class="form-group{{ $errors->has('blood_group') ? ' has-error' : '' }}">
-                            <label for="blood_group" class="col-md-4 control-label">Blood Group</label>
+                            <label for="blood_group" class="col-md-4 control-label">Grupo Sanguíneo</label>
 
                             <div class="col-md-6">
                                 <select id="blood_group" class="form-control" name="blood_group">
@@ -194,7 +194,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('nationality') ? ' has-error' : '' }}">
-                            <label for="nationality" class="col-md-4 control-label">Nationality</label>
+                            <label for="nationality" class="col-md-4 control-label">Nacionalidade</label>
 
                             <div class="col-md-6">
                                 <input id="nationality" type="text" class="form-control" name="nationality" value="{{ old('nationality') }}" required>
@@ -208,12 +208,12 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
-                            <label for="gender" class="col-md-4 control-label">Gender</label>
+                            <label for="gender" class="col-md-4 control-label">Gênero</label>
 
                             <div class="col-md-6">
                               <select id="gender" class="form-control" name="gender">
-                                <option selected="selected">Male</option>
-                                <option>Female</option>
+                                <option selected="selected">Masculino</option>
+                                <option>Feminino</option>
                               </select>
 
                                 @if ($errors->has('gender'))

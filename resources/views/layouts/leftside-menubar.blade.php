@@ -129,7 +129,7 @@
 </li>
 <li class="nav-item" style="border-bottom: 1px solid #dbd8d8;"></li>
 <li class="nav-item">
-  <a class="nav-link" href="{{ url('create-school') }}"><i class="material-icons">settings</i> <span class="nav-link-text">Conf. Acadêmicas</span></a>
+  <a class="nav-link" href="{{ url('create-school') }}"><i class="material-icons">settings</i> <span class="nav-link-text">Config. Acadêmicas</span></a>
 </li>
 <li class="nav-item dropdown">
   <a role="button" href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i

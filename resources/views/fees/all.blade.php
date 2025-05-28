@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'All Fees')
+@section('title', 'Todas as Taxas')
 
 @section('content')
 <div class="container-fluid">
@@ -10,8 +10,8 @@
         </div>
         <div class="col-md-10" id="main-container">
             <div class="panel panel-default">
-                <div class="page-panel-title">All Fees
-                  <button class="btn btn-xs btn-success pull-right" role="button" id="btnPrint" ><i class="material-icons">print</i> Print Fees Form</button>
+                <div class="page-panel-title">Todas as Taxas
+                  <button class="btn btn-xs btn-success pull-right" role="button" id="btnPrint" ><i class="material-icons">print</i> Imprimir Formulário de Taxas</button>
               </div>
                 <div class="panel-body">
                     @if (session('status'))
@@ -36,11 +36,11 @@ $("#btnPrint").on("click", function () {
     for(var j = 0; j < 3; j++){
       var htd = htr.insertCell();
       if(j == 0)
-        cellText = 'Sl.';
+        cellText = 'Nº';
       else if(j == 1)
-        cellText = "Field Name";
+        cellText = "Nome do Campo";
       else {
-        cellText = 'Amount (taka)';
+        cellText = 'Valor (kwanza)';
       }
       htd.appendChild(document.createTextNode(cellText));
     }
@@ -66,10 +66,10 @@ $("#btnPrint").on("click", function () {
     });
     var schoolTable = feesTable.cloneNode(true);
     var printWindow = window.open('', '', 'height=720,width=1280');
-    printWindow.document.write('<html><head><title>Fees Form</title>');
+    printWindow.document.write('<html><head><title>Formulário de Taxas</title>');
     printWindow.document.write('<link href="{{url('css/app.css')}}" rel="stylesheet">');
     printWindow.document.write('</head><body>');
-    printWindow.document.write('<div class="container" style="height:100vh;"><div class="col-md-6" id="academic-part"  style="border-right: dotted 1px black;height:100vh;"><h2 style="text-align:center;">{{Auth::user()->school->name}}</h2><h4 style="text-align:center;">Fees Form</h4><h5>Academic Part</h5><div style="display:flex;"><div><h5>Student Name: </h5></div><div style="width:250px; border-bottom: 1px solid black;"></div><div><h5>Session:</h5></div><div style="width:100px; border-bottom: 1px solid black;"></div></div><div style="display:flex;"><div><h5>Class: </h5></div><div style="width:100px; border-bottom: 1px solid black;"></div><div><h5>Section: </h5></div><div style="width:100px; border-bottom: 1px solid black;"></div><div><h5>Roll No.:</h5></div><div style="width:100px; border-bottom: 1px solid black;"></div></div></div><div class="col-md-6" id="school-part" style="height:100vh;"><h2 style="text-align:center;">{{Auth::user()->school->name}}</h2><h4 style="text-align:center;">Fees Form</h4><h5>School Part</h5><div style="display:flex;"><div><h5>Student Name: </h5></div><div style="width:250px; border-bottom: 1px solid black;"></div><div><h5>Session:</h5></div><div style="width:100px; border-bottom: 1px solid black;"></div></div><div style="display:flex;"><div><h5>Class: </h5></div><div style="width:100px; border-bottom: 1px solid black;"></div><div><h5>Section: </h5></div><div style="width:100px; border-bottom: 1px solid black;"></div><div><h5>Roll No.:</h5></div><div style="width:100px; border-bottom: 1px solid black;"></div></div></div></div>');
+    printWindow.document.write('<div class="container" style="height:100vh;"><div class="col-md-6" id="academic-part"  style="border-right: dotted 1px black;height:100vh;"><h2 style="text-align:center;">{{Auth::user()->school->name}}</h2><h4 style="text-align:center;">Formulário de Taxas</h4><h5>Parte Acadêmica</h5><div style="display:flex;"><div><h5>Nome do Aluno: </h5></div><div style="width:250px; border-bottom: 1px solid black;"></div><div><h5>Ano Letivo:</h5></div><div style="width:100px; border-bottom: 1px solid black;"></div></div><div style="display:flex;"><div><h5>Turma: </h5></div><div style="width:100px; border-bottom: 1px solid black;"></div><div><h5>Seção: </h5></div><div style="width:100px; border-bottom: 1px solid black;"></div><div><h5>Número:</h5></div><div style="width:100px; border-bottom: 1px solid black;"></div></div></div><div class="col-md-6" id="school-part" style="height:100vh;"><h2 style="text-align:center;">{{Auth::user()->school->name}}</h2><h4 style="text-align:center;">Formulário de Taxas</h4><h5>Parte da Escola</h5><div style="display:flex;"><div><h5>Nome do Aluno: </h5></div><div style="width:250px; border-bottom: 1px solid black;"></div><div><h5>Ano Letivo:</h5></div><div style="width:100px; border-bottom: 1px solid black;"></div></div><div style="display:flex;"><div><h5>Turma: </h5></div><div style="width:100px; border-bottom: 1px solid black;"></div><div><h5>Seção: </h5></div><div style="width:100px; border-bottom: 1px solid black;"></div><div><h5>Número:</h5></div><div style="width:100px; border-bottom: 1px solid black;"></div></div></div></div>');
     printWindow.document.write('</body></html>');
     printWindow.document.close();
     var academicPart = printWindow.document.getElementById("academic-part");

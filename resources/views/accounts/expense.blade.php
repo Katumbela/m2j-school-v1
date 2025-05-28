@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Add New Expense')
+@section('title', 'Adicionar Nova Despesa')
 @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-8" id="main-container">
             <div class="panel panel-default">
-                <div class="page-panel-title">Add New Expense</div>
+                <div class="page-panel-title">Adicionar Nova Despesa</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -19,7 +19,7 @@
                     <form class="form-horizontal" action="{{url('accounts/create-expense')}}" method="post">
                       {{ csrf_field() }}
                       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                          <label for="name" class="col-md-4 control-label">Sector Name</label>
+                          <label for="name" class="col-md-4 control-label">Nome do Setor</label>
 
                           <div class="col-md-6">
                               <select  class="form-control" name="name">
@@ -36,10 +36,10 @@
                           </div>
                       </div>
                       <div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">
-                          <label for="amount" class="col-md-4 control-label">Amount</label>
+                          <label for="amount" class="col-md-4 control-label">Valor</label>
 
                           <div class="col-md-6">
-                              <input id="amount" type="number" class="form-control" name="amount" value="{{ old('amount') }}" placeholder="Amount" required>
+                              <input id="amount" type="number" class="form-control" name="amount" value="{{ old('amount') }}" placeholder="Valor" required>
 
                               @if ($errors->has('amount'))
                                   <span class="help-block">
@@ -49,10 +49,10 @@
                           </div>
                       </div>
                       <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                          <label for="description" class="col-md-4 control-label">Description</label>
+                          <label for="description" class="col-md-4 control-label">Descrição</label>
 
                           <div class="col-md-6">
-                              <textarea rows="3" id="description" class="form-control" name="description" placeholder="Description" required>{{ old('description') }}</textarea>
+                              <textarea rows="3" id="description" class="form-control" name="description" placeholder="Descrição" required>{{ old('description') }}</textarea>
 
                               @if ($errors->has('description'))
                                   <span class="help-block">
@@ -63,7 +63,7 @@
                       </div>
                       <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-8">
-                          <button type="submit" class="btn btn-danger">Save</button>
+                          <button type="submit" class="btn btn-danger">Salvar</button>
                         </div>
                       </div>
                     </form>

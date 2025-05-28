@@ -103,11 +103,11 @@
                                 <img src="{{asset('01-progress.gif')}}" data-src="{{url(Auth::user()->pic_path)}}" alt="Profile Picture"
                                     style="vertical-align: middle;border-style: none;border-radius: 50%;width: 30px;height: 30px;">
                                 @else
-                                @if(strtolower(Auth::user()->gender) == 'male')
-                                <img src="{{asset('01-progress.gif')}}" data-src="https://hoteltopic.com/wp-content/uploads/2018/02/female-user-icon-7.png"
+                                @if(strtolower(Auth::user()->gender) != 'male')
+                                <img src="{{asset('01-progress.gif')}}" data-src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg"
                                     alt="Profile Picture" style="vertical-align: middle;border-style: none;border-radius: 50%;width: 30px;height: 30px;">
                                 @else
-                                <img src="{{asset('01-progress.gif')}}" data-src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg"
+                                <img src="{{asset('01-progress.gif')}}" data-src="https://hoteltopic.com/wp-content/uploads/2018/02/female-user-icon-7.png"
                                     alt="Profile Picture" style="vertical-align: middle;border-style: none;border-radius: 50%;width: 30px;height: 30px;">
                                 @endif
                                 @endif

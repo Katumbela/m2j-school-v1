@@ -11,7 +11,7 @@
 
     <title>@yield('title') - {{ (Auth::check() && (Auth::user()->role == 'student' || Auth::user()->role == 'teacher'
         || Auth::user()->role == 'admin' || Auth::user()->role == 'accountant' || Auth::user()->role ==
-        'librarian'))?Auth::user()->school->name:'Laravel' }}</title>
+        'librarian'))?Auth::user()->school->name:'M2J Tecnologia' }}</title>
     <style>
         .loader {
             position: fixed;
@@ -66,7 +66,7 @@
                     <a class="navbar-brand" href="{{ url('/home') }}" style="color: #000;">
                         {{ (Auth::check() && (Auth::user()->role == 'student' || Auth::user()->role == 'teacher' ||
                         Auth::user()->role == 'admin' || Auth::user()->role == 'accountant' || Auth::user()->role ==
-                        'librarian'))?Auth::user()->school->name:'Laravel' }}
+                        'librarian'))?Auth::user()->school->name:'M2J Tecnologia' }}
                     </a>
                 </div>
 

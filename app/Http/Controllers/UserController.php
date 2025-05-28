@@ -367,7 +367,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-      $user = User::find($id);
+      $user = User::with(['section', 'department'])->find($id);
       $classes = \App\Myclass::where('school_id',\Auth::user()->school_id)->pluck('id')->toArray();
       $sections = \App\Section::whereIn('class_id',$classes)->get();
       $departments = \App\Department::where('school_id',\Auth::user()->school_id)->get();

@@ -71,7 +71,7 @@
                                     if (file.size > filesSize) {
                                         swal({
                                             title: 'Arquivo muito grande',
-                                            text: 'O tamanho máximo permitido é 50MB',
+                                            text: 'O tamanho máximo permitido é 10MB',
                                             type: 'error',
                                             showCloseButton: true,
                                             confirmButtonText: 'OK',
@@ -159,9 +159,10 @@
                 $('#fileupload').val('');
             })
             .on('fileuploadfail', function(e, data) {
+                var error = data['jqXHR']['responseJSON']['error'] || 'Ocorreu um erro ao enviar o arquivo. Por favor, tente novamente.';
                 swal({
                     title: 'Erro no upload',
-                    text: 'Ocorreu um erro ao enviar o arquivo. Por favor, tente novamente.',
+                    text: error,
                     type: 'error',
                     showCloseButton: true,
                     confirmButtonText: 'OK',
@@ -169,8 +170,7 @@
                 });
 
                 data.context.html('<div class="alert alert-danger">Falha no upload do arquivo</div>');
-                var error = data['jqXHR']['responseJSON']['error'];
-                $('#errorAlert').text(error || 'Erro desconhecido').show();
+                $('#errorAlert').text(error).show();
                 $('.progress').hide();
                 $('#selected-file-name').text('');
                 $('#fileupload').val('');

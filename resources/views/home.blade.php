@@ -47,7 +47,7 @@
                       <div class="col-sm-8">
                         <div class="panel panel-default" style="background-color: rgba(242,245,245,0.8);">
                           <div class="panel-body">
-                            <h3>Bem-vindo ao {{Auth::user()->school->name}}</h3>
+                            <h3>Bem-vindo ao {{App\Utils\StringUtils::getAcronym(Auth::user()->school->name)}}</h3>
                             Sua presença e cooperação nos ajudarão a melhorar o sistema educacional da nossa organização.
                           </div>
                         </div>

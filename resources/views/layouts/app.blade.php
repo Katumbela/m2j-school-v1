@@ -150,6 +150,7 @@
         crossorigin="anonymous" id="bootstrap-print-id">
     <link href="{{asset('css/flatly.bootstrap-3.3.7.min.css') }}" rel="stylesheet" id="bootswatch-print-id">
     <link href="{{asset('css/dataTables-1.10.16.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <style>
         .navbar-default .navbar-toggle .icon-bar {
@@ -267,16 +268,8 @@
             margin-bottom: 0;
         }
 
-        @font-face {
-            font-family: 'Material Icons';
-            font-style: normal;
-            font-weight: 400;
-            src: url('{{asset(' css/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2')}}') format('woff2');
-        }
-
         .material-icons {
             vertical-align: middle;
-            /* new */
             font-family: 'Material Icons';
             font-weight: normal;
             font-style: normal;

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Adicionar Programa')
+@section('title', 'Add Syllabus')
 <!-- Main Quill library -->
 {{--<script src="//cdn.quilljs.com/1.3.5/quill.js"></script>--}}
 
@@ -17,9 +17,9 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
                     @endif
                     @component('components.file-uploader',['upload_type'=>'syllabus'])
                     @endcomponent

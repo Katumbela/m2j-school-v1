@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Notas')
+@section('title', 'Grade')
 
 @section('content')
 <div class="container-fluid">
@@ -11,12 +11,12 @@
         <div class="col-md-10" id="main-container">
             @if(Auth::user()->role != 'student')
             <ol class="breadcrumb" style="margin-top: 3%;">
-                <li><a href="{{url('grades/all-exams-grade')}}" style="color:#3b80ef;">Notas</a></li>
-                <li><a href="{{url()->previous()}}" style="color:#3b80ef;">Alunos da Seção</a></li>
-                <li class="active">Histórico</li>
+                <li><a href="{{url('grades/all-exams-grade')}}" style="color:#3b80ef;">Grades</a></li>
+                <li><a href="{{url()->previous()}}" style="color:#3b80ef;">Section Students</a></li>
+                <li class="active">History</li>
             </ol>
             @endif
-            <h2>Histórico de Notas e Avaliações</h2>
+            <h2>Marks and Grades History</h2>
             <div class="panel panel-default">
               @if(count($grades) > 0)
               @foreach ($grades as $grade)
@@ -25,7 +25,7 @@
                     $classNumber = $grade->student->section->class->class_number;
                     $sectionNumber = $grade->student->section->section_number;
                 ?>
-                <div class="page-panel-title"><b>Código do Aluno</b> - {{$grade->student->student_code}} &nbsp;<b>Nome</b> -  {{$grade->student->name}} &nbsp;<b>Turma</b> - {{$grade->student->section->class->class_number}} &nbsp;<b>Seção</b> - {{$grade->student->section->section_number}}</div>
+                <div class="page-panel-title"><b>Student Code</b> - {{$grade->student->student_code}} &nbsp;<b>Name</b> -  {{$grade->student->name}} &nbsp;<b>Class</b> - {{$grade->student->section->class->class_number}} &nbsp;<b>Section</b> - {{$grade->student->section->section_number}}</div>
                  @break($loop->first)
               @endforeach
                 <div class="panel-body">
@@ -39,7 +39,7 @@
                 </div>
               @else
                 <div class="panel-body">
-                    Nenhum Dado Relacionado Encontrado.
+                    No Related Data Found.
                 </div>
               @endif
             </div>

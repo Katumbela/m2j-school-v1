@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Curso')
+@section('title', 'Course')
 
 @section('content')
 <div class="container-fluid">
@@ -9,11 +9,11 @@
             @include('layouts.leftside-menubar')
         </div>
         <div class="col-md-10" id="main-container">
-            <h2>Cursos Ministrados pelo Professor</h2>
+            <h2>Courses Taken by Teacher</h2>
             <div class="panel panel-default">
               @if(count($courses) > 0)
               @foreach ($courses as $course)
-                <div class="page-panel-title" style="font-size: 20px;"><b>Código do Professor</b> - {{$course->teacher->student_code}} &nbsp;<b>Nome</b> - <a href="{{url('user/'.$course->teacher->student_code)}}">{{$course->teacher->name}}</a></div>
+                <div class="page-panel-title" style="font-size: 20px;"><b>Teacher Code</b> - {{$course->teacher->student_code}} &nbsp;<b>Name</b> - <a href="{{url('user/'.$course->teacher->student_code)}}">{{$course->teacher->name}}</a></div>
                  @break($loop->first)
               @endforeach
                 <div class="panel-body">
@@ -28,7 +28,7 @@
                 </div>
               @else
                 <div class="panel-body">
-                    Nenhum dado relacionado encontrado.
+                    No Related Data Found.
                 </div>
               @endif
             </div>

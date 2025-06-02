@@ -11,7 +11,7 @@
 
     <title>@yield('title') - {{ (Auth::check() && (Auth::user()->role == 'student' || Auth::user()->role == 'teacher'
         || Auth::user()->role == 'admin' || Auth::user()->role == 'accountant' || Auth::user()->role ==
-        'librarian'))?Auth::user()->school->name:'M2J Tecnologia' }}</title>
+        'librarian'))?Auth::user()->school->name:'Laravel' }}</title>
     <style>
         .loader {
             position: fixed;
@@ -20,17 +20,7 @@
             width: 100%;
             height: 100%;
             z-index: 999999;
-            background-color: #fff;
-        }
-
-        .loader img {
-            width: 10rem;
-            height: 10rem;
-            border-radius: 10%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            background: url({{asset('01-progress.gif')}}) 50% 50% no-repeat rgb(249,249,249);
         }
     </style>
 
@@ -45,9 +35,7 @@
 </head>
 
 <body>
-    <div class="loader">
-        <img src="{{asset('01-progress.gif')}}" alt="">
-    </div>
+    <div class="loader"></div>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -66,7 +54,7 @@
                     <a class="navbar-brand" href="{{ url('/home') }}" style="color: #000;">
                         {{ (Auth::check() && (Auth::user()->role == 'student' || Auth::user()->role == 'teacher' ||
                         Auth::user()->role == 'admin' || Auth::user()->role == 'accountant' || Auth::user()->role ==
-                        'librarian'))?Auth::user()->school->name:'M2J Tecnologia' }}
+                        'librarian'))?Auth::user()->school->name:'Laravel' }}
                     </a>
                 </div>
 
@@ -85,8 +73,8 @@
                                 role="button">
                                 <i class="material-icons text-muted">email</i>
                                 <?php
-                                $mc = \App\Notification::where('student_id', \Auth::user()->id)->where('active', 1)->count();
-                                ?>
+                                        $mc = \App\Notification::where('student_id',\Auth::user()->id)->where('active',1)->count();
+                                    ?>
                                 @if($mc > 0)
                                 <span class="label label-danger" style="vertical-align: middle;border-style: none;border-radius: 50%;width: 30px;height: 30px;">{{$mc}}</span>
                                 @endif
@@ -103,11 +91,11 @@
                                 <img src="{{asset('01-progress.gif')}}" data-src="{{url(Auth::user()->pic_path)}}" alt="Profile Picture"
                                     style="vertical-align: middle;border-style: none;border-radius: 50%;width: 30px;height: 30px;">
                                 @else
-                                @if(strtolower(Auth::user()->gender) != 'male')
-                                <img src="{{asset('01-progress.gif')}}" data-src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg"
+                                @if(strtolower(Auth::user()->gender) == 'male')
+                                <img src="{{asset('01-progress.gif')}}" data-src="https://png.icons8.com/dusk/200/000000/user.png"
                                     alt="Profile Picture" style="vertical-align: middle;border-style: none;border-radius: 50%;width: 30px;height: 30px;">
                                 @else
-                                <img src="{{asset('01-progress.gif')}}" data-src="https://hoteltopic.com/wp-content/uploads/2018/02/female-user-icon-7.png"
+                                <img src="{{asset('01-progress.gif')}}" data-src="https://png.icons8.com/dusk/200/000000/user-female.png"
                                     alt="Profile Picture" style="vertical-align: middle;border-style: none;border-radius: 50%;width: 30px;height: 30px;">
                                 @endif
                                 @endif
@@ -117,16 +105,16 @@
                             <ul class="dropdown-menu">
                                 @if(Auth::user()->role != 'master')
                                 <li>
-                                    <a href="{{url('user/'.Auth::user()->student_code)}}">Perfil</a>
+                                    <a href="{{url('user/'.Auth::user()->student_code)}}">Profile</a>
                                 </li>
                                 @endif
                                 <li>
-                                    <a href="{{url('user/config/change_password')}}">Alterar Senha</a>
+                                    <a href="{{url('user/config/change_password')}}">Change Password</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
-                                        Sair
+                                        Logout
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -150,7 +138,6 @@
         crossorigin="anonymous" id="bootstrap-print-id">
     <link href="{{asset('css/flatly.bootstrap-3.3.7.min.css') }}" rel="stylesheet" id="bootswatch-print-id">
     <link href="{{asset('css/dataTables-1.10.16.bootstrap.min.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <style>
         .navbar-default .navbar-toggle .icon-bar {
@@ -268,8 +255,16 @@
             margin-bottom: 0;
         }
 
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url('{{asset('css/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2')}}') format('woff2');
+        }
+
         .material-icons {
             vertical-align: middle;
+            /* new */
             font-family: 'Material Icons';
             font-weight: normal;
             font-style: normal;
@@ -366,22 +361,20 @@
         }
     </style>
     <!-- Scripts -->
-    <script src="{{ asset('js/jquery-2.1.3.min.js') }}"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="{{ asset('js/bootstrap-3.3.7.min.js') }}"></script>
     <script src="{{ asset('js/dataTables-1.10.16.min.js') }}"></script>
     <script src="{{ asset('js/dataTables-1.10.16.bootstrap.min.js') }}"></script>
 
     <script>
-        $(window).load(function() {
+        $(window).load(function () {
             $('.loader').fadeOut();
         });
-        $(document).ready(function() {
+        $(document).ready(function () {
             var myTable = $('.table-data-div').DataTable({
                 paging: false,
             });
         });
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             var allimages = document.getElementsByTagName('img');
             for (var i = 0; i < allimages.length; i++) {
                 if (allimages[i].getAttribute('data-src')) {

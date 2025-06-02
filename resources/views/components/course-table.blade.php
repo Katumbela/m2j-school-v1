@@ -3,29 +3,29 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Nome do Curso</th>
-      <th scope="col">Horário do Curso</th>
-      <th scope="col">Número da Sala</th>
+      <th scope="col">Course Name</th>
+      <th scope="col">Course Time</th>
+      <th scope="col">Room Number</th>
       @if($student)
-        <th scope="col">Professor do Curso</th>
+        <th scope="col">Course Teacher</th>
       @endif
       @if(!$student)
-        <th scope="col">Número da Turma</th>
-        <th scope="col">Número da Seção</th>
-        <th scope="col">Todos os Alunos</th>
-        <th scope="col">Ação</th>
+        <th scope="col">Class Number</th>
+        <th scope="col">Section Number</th>
+        <th scope="col">All Students</th>
+        <th scope="col">Action</th>
       @endif
       @foreach ($courses as $course)
         @if(!$student && ($course->teacher_id == Auth::user()->id || Auth::user()->role == 'admin') && $course->exam_id != 0)
-          <th scope="col">Dar Notas</th>
-          <th scope="col">Ver Notas</th>
+          <th scope="col">Give Marks</th>
+          <th scope="col">View Marks</th>
         @endif
         @break
       @endforeach
       @if(Auth::user()->role == 'admin')
         {{-- <th scope="col">Action</th>
         <th scope="col">Action</th> --}}
-        <th scope="col">Editar</th>
+        <th scope="col">Edit</th>
       @endif
     </tr>
   </thead>
@@ -53,28 +53,28 @@
 
         @if($course->exam_id != 0)
           <td>
-            <a href="{{url('course/students/'.$course->teacher_id.'/'.$course->id.'/'.$course->exam_id.'/'.$course->section->id)}}" role="button" class="btn btn-info btn-xs"><i class="material-icons">message</i> Mensagem para Alunos</a>
+            <a href="{{url('course/students/'.$course->teacher_id.'/'.$course->id.'/'.$course->exam_id.'/'.$course->section->id)}}" role="button" class="btn btn-info btn-xs"><i class="material-icons">message</i> Message Students</a>
           </td>
         @else
-          <td><small>Salve sob Exame para Adicionar Aluno</small></td>
+          <td><small>Save under Exam to Add Student</small></td>
         @endif
 
         @if(!$student && ($course->teacher_id == Auth::user()->id || Auth::user()->role == 'admin') && $course->exam_id != 0)
           <td>
-            <a href="{{url('attendances/students/'.$course->teacher_id.'/'.$course->id.'/'.$course->exam_id.'/'.$course->section->id)}}" role="button" class="btn btn-primary btn-xs"><i class="material-icons">spellcheck</i> Registrar Presença</a>
+            <a href="{{url('attendances/students/'.$course->teacher_id.'/'.$course->id.'/'.$course->exam_id.'/'.$course->section->id)}}" role="button" class="btn btn-primary btn-xs"><i class="material-icons">spellcheck</i> Take Attendance</a>
           </td>
         @else
-          <td><small>Salve sob Exame para Registrar Presença</small></td>
+          <td><small>Save under Exam to Take Attendance</small></td>
         @endif
 
       @endif
 
       @if(!$student && ($course->teacher_id == Auth::user()->id || Auth::user()->role == 'admin') && $course->exam_id != 0)
         <td>
-          <a href="{{url('grades/c/'.$course->teacher_id.'/'.$course->id.'/'.$course->exam_id.'/'.$course->section->id)}}" role="button" class="btn btn-danger btn-xs"><i class="material-icons">assessment</i> Enviar Nota</a>
+          <a href="{{url('grades/c/'.$course->teacher_id.'/'.$course->id.'/'.$course->exam_id.'/'.$course->section->id)}}" role="button" class="btn btn-danger btn-xs"><i class="material-icons">assessment</i> Submit Grade</a>
         </td>
         <td>
-          <a href="{{url('grades/t/'.$course->teacher_id.'/'.$course->id.'/'.$course->exam_id.'/'.$course->section->id)}}" role="button" class="btn btn-success btn-xs"><i class="material-icons">bar_chart</i> Ver Notas</a>
+          <a href="{{url('grades/t/'.$course->teacher_id.'/'.$course->id.'/'.$course->exam_id.'/'.$course->section->id)}}" role="button" class="btn btn-success btn-xs"><i class="material-icons">bar_chart</i> View Marks</a>
         </td>
       @endif
 
@@ -106,7 +106,7 @@
         @endif --}}
 
         <td>
-          <a href="{{url('edit/course/'.$course->id)}}" class="btn btn-xs btn-danger"><i class="material-icons">edit</i> Editar</a>
+          <a href="{{url('edit/course/'.$course->id)}}" class="btn btn-xs btn-danger"><i class="material-icons">edit</i> Edit</a>
         </td>
       @endif
     </tr>

@@ -3,28 +3,28 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Código do Aluno</th>
-      <th scope="col">Nome do Aluno</th>
-      <th scope="col">Presença</th>
+      <th scope="col">Student Code</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Attendance</th>
         @for($i=1;$i<=5;$i++)
           <th scope="col">Quiz {{$i}}</th>
         @endfor
         @for($i=1;$i<=3;$i++)
-          <th scope="col">Trabalho {{$i}}</th>
+          <th scope="col">Assignment {{$i}}</th>
         @endfor
         @for($i=1;$i<=5;$i++)
-          <th scope="col">Teste {{$i}}</th>
+          <th scope="col">CT {{$i}}</th>
         @endfor
         @if($grade->course->final_exam_percent > 0)
-          <th scope="col">Escrito</th>
-          <th scope="col">Múltipla Escolha</th>
+          <th scope="col">Written</th>
+          <th scope="col">Mcq</th>
         @endif
         @if($grade->course->practical_percent > 0)
-          <th scope="col">Prático</th>
+          <th scope="col">Practical</th>
         @endif
-      <th scope="col">Total de Pontos</th>
-      <th scope="col">Média</th>
-      <th scope="col">Nota</th>
+      <th scope="col">Total Marks</th>
+      <th scope="col">GPA</th>
+      <th scope="col">Grade</th>
     </tr>
   </thead>
   <tbody>

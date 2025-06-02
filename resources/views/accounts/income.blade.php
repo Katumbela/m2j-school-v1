@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Adicionar Nova Receita')
+@section('title', 'Add New Income')
 @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-8" id="main-container">
             <div class="panel panel-default">
-                <div class="page-panel-title">Adicionar Nova Receita / Criar Fatura</div>
+                <div class="page-panel-title">Add New Income / Create Invoice</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -19,7 +19,7 @@
                     <form class="form-horizontal" action="{{url('accounts/create-income')}}" method="post">
                       {{ csrf_field() }}
                       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                          <label for="name" class="col-md-4 control-label">Nome do Setor</label>
+                          <label for="name" class="col-md-4 control-label">Sector Name</label>
 
                           <div class="col-md-6">
                               <select class="form-control" id="name" name="name">
@@ -37,12 +37,12 @@
                       </div>
                       {{--
                       <div class="form-group{{ $errors->has('income_source') ? ' has-error' : '' }}">
-                          <label for="income_source" class="col-md-4 control-label">Fonte de Receita: </label>
+                          <label for="income_source" class="col-md-4 control-label">Income Source: </label>
 
                           <div class="col-md-6">
                               <select class="form-control" id="income_source" name="income_source">
-                                <option value="1" selected>Estudante</option>
-                                <option value="2">Outro</option>
+                                <option value="1" selected>Student</option>
+                                <option value="2">Other</option>
                               </select>
 
                               @if ($errors->has('income_source'))
@@ -53,12 +53,12 @@
                           </div>
                       </div>
                       <div class="form-group{{ $errors->has('invoice_type') ? ' has-error' : '' }}">
-                          <label for="invoice_type" class="col-md-4 control-label">Tipo de Fatura: </label>
+                          <label for="invoice_type" class="col-md-4 control-label">Invoice Type: </label>
 
                           <div class="col-md-6">
                               <select class="form-control" id="invoice_type" name="invoice_type">
-                                <option value="1" selected>Fatura Única</option>
-                                <option value="2">Fatura em Massa</option>
+                                <option value="1" selected>Single Invoice</option>
+                                <option value="2">Mass Invoice</option>
                               </select>
 
                               @if ($errors->has('invoice_type'))
@@ -69,12 +69,12 @@
                           </div>
                       </div>
                       <div class="form-group{{ $errors->has('student_section') ? ' has-error' : '' }} student-by-section">
-                          <label for="student_section" class="col-md-4 control-label">Estudantes de: </label>
+                          <label for="student_section" class="col-md-4 control-label">Students of: </label>
 
                           <div class="col-md-6">
                               <select class="form-control" id="student_section" name="student_section">
                                 @foreach($sections as $section)
-                                  <option value="{{$section->id}}">Classe: {{$section->class->class_number}} Seção: {{$section->section_number}}</option>
+                                  <option value="{{$section->id}}">Class: {{$section->class->class_number}} Section: {{$section->section_number}}</option>
                                 @endforeach
                               </select>
 
@@ -86,7 +86,7 @@
                           </div>
                       </div>
                       <div class="form-group{{ $errors->has('section_students') ? ' has-error' : '' }} student-by-section">
-                          <label for="section_students" class="col-md-4 control-label">Estudante:</label>
+                          <label for="section_students" class="col-md-4 control-label">Student:</label>
 
                           <div class="col-md-6">
                               <select class="form-control" id="section_students" name="section_students">
@@ -103,10 +103,10 @@
                           </div>
                       </div>--}}
                       <div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">
-                          <label for="amount" class="col-md-4 control-label">Valor</label>
+                          <label for="amount" class="col-md-4 control-label">Amount</label>
 
                           <div class="col-md-6">
-                              <input id="amount" type="number" class="form-control" name="amount" value="{{ old('amount') }}" placeholder="Valor" required>
+                              <input id="amount" type="number" class="form-control" name="amount" value="{{ old('amount') }}" placeholder="Amount" required>
 
                               @if ($errors->has('amount'))
                                   <span class="help-block">
@@ -117,13 +117,13 @@
                       </div>
                       {{--
                       <div class="form-group{{ $errors->has('payment_method') ? ' has-error' : '' }}">
-                          <label for="payment_method" class="col-md-4 control-label">Método de Pagamento: </label>
+                          <label for="payment_method" class="col-md-4 control-label">Payment Method: </label>
 
                           <div class="col-md-6">
                               <select class="form-control" id="payment_method" name="payment_method">
-                                <option value="1">Dinheiro</option>
-                                <option value="2">Cheque Bancário</option>
-                                <option value="3">Cartão de Crédito</option>
+                                <option value="1">Cash</option>
+                                <option value="2">Bank Check</option>
+                                <option value="3">Credit Card</option>
                               </select>
 
                               @if ($errors->has('payment_method'))
@@ -134,12 +134,12 @@
                           </div>
                       </div>
                       <div class="form-group{{ $errors->has('paid_status') ? ' has-error' : '' }}">
-                          <label for="paid_status" class="col-md-4 control-label">Status do Pagamento: </label>
+                          <label for="paid_status" class="col-md-4 control-label">Payment Status: </label>
 
                           <div class="col-md-6">
                               <select class="form-control" id="paid_status" name="paid_status">
-                                <option value="1" selected>Pago</option>
-                                <option value="2">Não Pago</option>
+                                <option value="1" selected>Paid</option>
+                                <option value="2">Unpaid</option>
                               </select>
 
                               @if ($errors->has('paid_status'))
@@ -150,10 +150,10 @@
                           </div>
                       </div>--}}
                       <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                          <label for="description" class="col-md-4 control-label">Descrição</label>
+                          <label for="description" class="col-md-4 control-label">Description</label>
 
                           <div class="col-md-6">
-                              <textarea rows="3" id="description" class="form-control" name="description" placeholder="Descrição" required>{{ old('description') }}</textarea>
+                              <textarea rows="3" id="description" class="form-control" name="description" placeholder="Description" required>{{ old('description') }}</textarea>
 
                               @if ($errors->has('description'))
                                   <span class="help-block">
@@ -164,7 +164,7 @@
                       </div>
                       <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-8">
-                          <button type="submit" class="btn btn-danger">Salvar</button>
+                          <button type="submit" class="btn btn-danger">Save</button>
                         </div>
                       </div>
                     </form>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Adicionar Aviso')
+@section('title', 'Add Notice')
 @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-10" id="main-container">
             <div class="panel panel-default">
-                <div class="page-panel-title">Adicionar Aviso</div>
+                <div class="page-panel-title">Add Notice</div>
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">

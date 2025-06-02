@@ -2,7 +2,7 @@
     <div class="page-panel-title" role="tab" id="heading{{$exam->id}}">
       <a class="panel-title collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$exam->id}}" aria-expanded="false" aria-controls="collapse{{$exam->id}}">
         <h5>
-          {{$exam->exam_name}} <span class="pull-right"><small>Clique para ver todos os cursos deste Exame <i class="material-icons">keyboard_arrow_down</i></small></span>
+          {{$exam->exam_name}} <span class="pull-right"><small>Click to view all courses under this Exam <i class="material-icons">keyboard_arrow_down</i></small></span>
         </h5>
       </a>
     </div>
@@ -11,11 +11,11 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Turma</th>
-                    <th>Nome do Curso</th>
-                    <th>Tipo do Curso</th>
-                    <th>Horário do Curso</th>
-                    <th>Professor do Curso</th>
+                    <th>Class</th>
+                    <th>Course Name</th>
+                    <th>Course Type</th>
+                    <th>Course Time</th>
+                    <th>Course Teacher</th>
                 </tr>
             </thead>
           <tbody>

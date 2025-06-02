@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Notas')
+@section('title', 'Grade')
 
 @section('content')
 <div class="container-fluid">
@@ -29,9 +29,9 @@
             <div class="panel panel-default" id="main-container">
               @if(count($grades) > 0)
               @foreach ($grades as $grade)
-                <div class="page-panel-title" style="font-size: 15px;"><b>Curso</b> - {{$grade->course->course_name}} &nbsp; <b>Turma</b> - {{$grade->course->section->class->class_number}} &nbsp;<b>Seção</b> - {{$grade->course->section->section_number}}
+                <div class="page-panel-title" style="font-size: 15px;"><b>Course</b> - {{$grade->course->course_name}} &nbsp; <b>Class</b> - {{$grade->course->section->class->class_number}} &nbsp;<b>Section</b> - {{$grade->course->section->section_number}}
                   <button type="submit" class="btn btn-success btn-xs pull-right">
-                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
                   </button>
                 </div>
                 @break($loop->first)
@@ -41,30 +41,30 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <ul>
                       <li>
-                        Selecione qual Sistema de Notas você deseja usar.
+                        Select which Grade System you want to use.
                       </li>
                       <li>
-                        <b>Exemplo de Contagem:</b> Se você aplicar 3 Provas e quiser contar as 2 melhores, então a Contagem de Provas é 2.
+                        <b>Count Example:</b> If you take 3 Quizes and want to count best 2, then Quiz Count is 2.
                       </li>
                       <li>
-                        <b>Exemplo de Porcentagem:</b> A porcentagem total deve ser 100%. Você pode colocar 100% em um campo ou distribuí-lo conforme sua necessidade. A nota máxima também é necessária para que a Porcentagem funcione.
+                        <b>Percentage Example:</b> Total percentage must be 100%. You can put 100% to a field or distribute it according to your need. Full mark is also needed for Percentage to work.
                       </li>
                       <li>
-                        <b>Exemplo de Nota Máxima:</b> Se você aplicar uma Prova de Classe onde a nota máxima é 15, então a Nota Máxima para a Prova de Classe é 15.
+                        <b>Full Mark Example:</b> If you take Class Test where full mark is 15, then Full mark for Class Test is 15.
                       </li>
                     </ul>
                   </div>
                       <table class="table table-condensed table-hover">
                         <thead>
                           <tr>
-                            <th scope="col" style="width:10%;">Selecionar Sistema de Notas</th>
-                            <th scope="col" style="width:10%;">Contagem de Provas</th>
-                            <th scope="col" style="width:10%;">Contagem de Trabalhos</th>
-                            <th scope="col" style="width:10%;">Contagem de Provas de Classe</th>
-                            <th scope="col" style="width:10%;">% de Presença</th>
-                            <th scope="col" style="width:10%;">% de Trabalhos</th>
-                            <th scope="col" style="width:10%;">% de Provas</th>
-                            <th scope="col" style="width:10%;">% de Provas de Classe</th>
+                            <th scope="col" style="width:10%;">Select Grade System</th>
+                            <th scope="col" style="width:10%;">Quiz Count</th>
+                            <th scope="col" style="width:10%;">Assignment Count</th>
+                            <th scope="col" style="width:10%;">Class Test Count</th>
+                            <th scope="col" style="width:10%;">Attendance %</th>
+                            <th scope="col" style="width:10%;">Assignment %</th>
+                            <th scope="col" style="width:10%;">Quiz %</th>
+                            <th scope="col" style="width:10%;">Class Test %</th>
                           </tr>
                         </thead>
                         <?php
@@ -81,74 +81,74 @@
                               </select>
                             </td>
                             <td>
-                            <input type="number" class="form-control input-sm" id="quiz-count" name="quiz_count" placeholder="Contagem de Provas" max="5" value="{{$grade->course->quiz_count}}">
+                            <input type="number" class="form-control input-sm" id="quiz-count" name="quiz_count" placeholder="Quiz Count" max="5" value="{{$grade->course->quiz_count}}">
                             </td>
                             <td>
-                              <input type="number" class="form-control input-sm" id="assignment-count" name="assignment_count" placeholder="Contagem de Trabalhos" max="3" value="{{$grade->course->assignment_count}}">
+                              <input type="number" class="form-control input-sm" id="assignment-count" name="assignment_count" placeholder="Assignment Count" max="3" value="{{$grade->course->assignment_count}}">
                             </td>
                             <td>
-                              <input type="number" class="form-control input-sm" id="ct-count" name="ct_count" placeholder="Contagem de PC" max="5" value="{{$grade->course->ct_count}}">
+                              <input type="number" class="form-control input-sm" id="ct-count" name="ct_count" placeholder="CT Count" max="5" value="{{$grade->course->ct_count}}">
                             </td>
                             <td>
-                              <input type="number" class="form-control input-sm" id="attendance" name="attendance_perc" placeholder="Porcentagem" max="50" value="{{$grade->course->attendance_percent}}">
+                              <input type="number" class="form-control input-sm" id="attendance" name="attendance_perc" placeholder="Percentage" max="50" value="{{$grade->course->attendance_percent}}">
                             </td>
                             <td>
                               <input type="number" class="form-control input-sm" id="assignment" name="assign_perc"
-                              placeholder="Porcentagem" max="50" value="{{$grade->course->assignment_percent}}">
+                              placeholder="Percentage" max="50" value="{{$grade->course->assignment_percent}}">
                             </td>
                             <td>
-                              <input type="number" class="form-control input-sm" id="quiz" name="quiz_perc" placeholder="Porcentagem" max="50" value="{{$grade->course->quiz_percent}}">
+                              <input type="number" class="form-control input-sm" id="quiz" name="quiz_perc" placeholder="Percentage" max="50" value="{{$grade->course->quiz_percent}}">
                             </td>
                             <td>
-                              <input type="number" class="form-control input-sm" id="class-test" name="ct_perc" placeholder="Porcentagem" max="50" value="{{$grade->course->ct_percent}}">
+                              <input type="number" class="form-control input-sm" id="class-test" name="ct_perc" placeholder="Percentage" max="50" value="{{$grade->course->ct_percent}}">
                             </td>
                           </tr>
                           <tr>
-                            <th scope="col" style="width:10%;">% de Exame Final</th>
-                            <th scope="col" style="width:10%;">% de Prática</th>
+                            <th scope="col" style="width:10%;">Final Exam %</th>
+                            <th scope="col" style="width:10%;">Practical %</th>
                             <th scope="col" style="width:10%;">
-                              Nota Máxima de Provas
+                              Quiz Full Marks
                             </th>
                             <th scope="col" style="width:10%;">
-                              Nota Máxima de Trabalhos
+                              Assignment Full Marks
                             </th>
                             <th scope="col" style="width:10%;">
-                              Nota Máxima de PC
+                              CT Full Marks
                             </th>
                             <th scope="col" style="width:10%;">
-                              Nota Máxima de Exame Final
+                              Final Exam Full Marks
                             </th>
                             <th scope="col" style="width:10%;">
-                              Nota Máxima de Prática
+                              Practical Full Marks
                             </th>
                             <th scope="col" style="width:10%;">
-                              Nota Máxima de Presença
+                              Attendance Full Marks
                             </th>
                           </tr>
                           <tr>
                             <td>
-                              <input type="number" class="form-control input-sm" id="final" name="final_perc" placeholder="Porcentagem" max="100" value="{{$grade->course->final_exam_percent}}">
+                              <input type="number" class="form-control input-sm" id="final" name="final_perc" placeholder="Percentage" max="100" value="{{$grade->course->final_exam_percent}}">
                             </td>
                             <td>
-                              <input type="number" class="form-control input-sm" id="practical_perc" name="practical_perc" placeholder="Porcentagem" max="100" value="{{$grade->course->practical_percent}}">
+                              <input type="number" class="form-control input-sm" id="practical_perc" name="practical_perc" placeholder="Percentage" max="100" value="{{$grade->course->practical_percent}}">
                             </td>
                             <td>
-                              <input type="number" class="form-control input-sm" id="q_full" name="quiz_fullmark" placeholder="Nota Máxima de Provas" max="20" value="{{$grade->course->quiz_fullmark}}">
+                              <input type="number" class="form-control input-sm" id="q_full" name="quiz_fullmark" placeholder="Quiz Full Marks" max="20" value="{{$grade->course->quiz_fullmark}}">
                             </td>
                             <td>
-                              <input type="number" class="form-control input-sm" id="a_full" name="assignment_fullmark" placeholder="Nota Máxima de Trabalhos" max="20" value="{{$grade->course->a_fullmark}}">
+                              <input type="number" class="form-control input-sm" id="a_full" name="assignment_fullmark" placeholder="Assignment Full Marks" max="20" value="{{$grade->course->a_fullmark}}">
                             </td>
                             <td>
-                              <input type="number" class="form-control input-sm" id="ct_full" name="ct_fullmark" placeholder="Nota Máxima de PC" max="20" value="{{$grade->course->ct_fullmark}}">
+                              <input type="number" class="form-control input-sm" id="ct_full" name="ct_fullmark" placeholder="CT Full Marks" max="20" value="{{$grade->course->ct_fullmark}}">
                             </td>
                             <td>
-                              <input type="number" class="form-control input-sm" id="final_full" name="final_fullmark" placeholder="Nota Máxima Final" max="100" value="{{$grade->course->final_fullmark}}">
+                              <input type="number" class="form-control input-sm" id="final_full" name="final_fullmark" placeholder="Final Full Marks" max="100" value="{{$grade->course->final_fullmark}}">
                             </td>
                             <td>
-                              <input type="number" class="form-control input-sm" id="practical_full" name="practical_fullmark" placeholder="Nota Máxima de Prática" max="100" value="{{$grade->course->practical_fullmark}}">
+                              <input type="number" class="form-control input-sm" id="practical_full" name="practical_fullmark" placeholder="Practical Full Marks" max="100" value="{{$grade->course->practical_fullmark}}">
                             </td>
                             <td>
-                              <input type="number" class="form-control input-sm" id="att_full" name="att_fullmark" placeholder="Nota Máxima de Presença" max="100" value="{{$grade->course->att_fullmark}}">
+                              <input type="number" class="form-control input-sm" id="att_full" name="att_fullmark" placeholder="Attendance Full Marks" max="100" value="{{$grade->course->att_fullmark}}">
                             </td>
                           </tr>
                         </tbody>
@@ -161,7 +161,7 @@
                 </div>
               @else
                 <div class="panel-body">
-                  Nenhum Dado Relacionado Encontrado.
+                  No Related Data Found.
                 </div>
               @endif
             </div>
@@ -171,14 +171,14 @@
               <div class="page-panel-title" style="font-size: 15px;">
                 <form action="{{url('grades/calculate-marks')}}" method="POST">
                   {{csrf_field()}}
-                  Dar Notas aos Alunos
+                  Give Marks to Students
                   <input type="hidden" name="course_id" value="{{$course_id}}">
                   @foreach($gradesystems as $gs)
                     <input type="hidden" name="grade_system_name" value="{{$gs->grade_system_name}}">
                   @endforeach
                   <input type="hidden" name="exam_id" value="{{$exam_id}}">
                   <input type="hidden" name="teacher_id" value="{{$teacher_id}}">
-                  <input type="submit" class="btn btn-info btn-xs pull-right" value="Obter Notas Totais">
+                  <input type="submit" class="btn btn-info btn-xs pull-right" value="Get Total Marks">
                 </form>
               </div>
               <div class="panel-body">
@@ -186,7 +186,7 @@
               </div>
               @else
                 <div class="panel-body">
-                  Nenhum Dado Relacionado Encontrado.
+                  No Related Data Found.
                 </div>
               @endif
             </div>

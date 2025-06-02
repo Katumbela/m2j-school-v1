@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Professores')
+@section('title', 'Teachers')
 
 @section('content')
 <div class="container-fluid">
@@ -12,7 +12,7 @@
             <div class="panel panel-default">
               @if(count($users) > 0)
               @foreach ($users as $user)
-                <div class="page-panel-title">Lista de todos os {{ucfirst($user->role) == 'Teacher' ? 'Professores' : 'Alunos'}}</div>
+                <div class="page-panel-title">List of all {{ucfirst($user->role)}}s</div>
                  @break($loop->first)
               @endforeach
                 <div class="panel-body">
@@ -27,7 +27,7 @@
                 </div>
               @else
                 <div class="panel-body">
-                    Nenhum dado relacionado encontrado.
+                    No Related Data Found.
                 </div>
               @endif
             </div>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Adicionar Sistema de GPA')
+@section('title', 'Add GPA System')
 @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-8" id="main-container">
             <div class="panel panel-default">
-                <div class="page-panel-title">Adicionar Sistema de GPA</div>
+                <div class="page-panel-title">Add GPA System</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -20,10 +20,10 @@
                     <form class="form-horizontal" action="{{url('create-gpa')}}" method="post">
                       {{ csrf_field() }}
                       <div class="form-group{{ $errors->has('grade_system_name') ? ' has-error' : '' }}">
-                          <label for="grade_system_name" class="col-md-4 control-label">Nome do Sistema de Notas</label>
+                          <label for="grade_system_name" class="col-md-4 control-label">Grade System Name</label>
 
                           <div class="col-md-6">
-                              <input id="grade_system_name" type="text" class="form-control" name="grade_system_name" value="{{ old('grade_system_name') }}" placeholder="Nome do Sistema de Notas" required>
+                              <input id="grade_system_name" type="text" class="form-control" name="grade_system_name" value="{{ old('grade_system_name') }}" placeholder="Grade System Name" required>
 
                               @if ($errors->has('grade_system_name'))
                                   <span class="help-block">
@@ -33,7 +33,7 @@
                           </div>
                       </div>
                       <div class="form-group{{ $errors->has('grade') ? ' has-error' : '' }}">
-                          <label for="grade" class="col-md-4 control-label">Nota</label>
+                          <label for="grade" class="col-md-4 control-label">Grade</label>
 
                           <div class="col-md-6">
                               <input id="grade" type="text" class="form-control" name="grade" value="{{ old('grade') }}" placeholder="A+, A, A-, B+, ..." required>
@@ -46,7 +46,7 @@
                           </div>
                       </div>
                       <div class="form-group{{ $errors->has('point') ? ' has-error' : '' }}">
-                          <label for="point" class="col-md-4 control-label">Pontuação</label>
+                          <label for="point" class="col-md-4 control-label">Grade Point</label>
 
                           <div class="col-md-6">
                               <input id="point" type="text" class="form-control" name="point" value="{{ old('point') }}" placeholder="5.00, 4.50, ..." required>
@@ -59,10 +59,10 @@
                           </div>
                       </div>
                       <div class="form-group{{ $errors->has('from_mark') ? ' has-error' : '' }}">
-                          <label for="from_mark" class="col-md-4 control-label">Nota Mínima</label>
+                          <label for="from_mark" class="col-md-4 control-label">From Mark</label>
 
                           <div class="col-md-6">
-                              <input id="from_mark" type="text" class="form-control" name="from_mark" value="{{ old('from_mark') }}" placeholder="Exemplo: 80" required>
+                              <input id="from_mark" type="text" class="form-control" name="from_mark" value="{{ old('from_mark') }}" placeholder="Example: 80" required>
 
                               @if ($errors->has('from_mark'))
                                   <span class="help-block">
@@ -72,10 +72,10 @@
                           </div>
                       </div>
                       <div class="form-group{{ $errors->has('to_mark') ? ' has-error' : '' }}">
-                          <label for="to_mark" class="col-md-4 control-label">Nota Máxima</label>
+                          <label for="to_mark" class="col-md-4 control-label">To Mark</label>
 
                           <div class="col-md-6">
-                              <input id="to_mark" type="text" class="form-control" name="to_mark" value="{{ old('to_mark') }}" placeholder="Exemplo: 90" required>
+                              <input id="to_mark" type="text" class="form-control" name="to_mark" value="{{ old('to_mark') }}" placeholder="Example: 90" required>
 
                               @if ($errors->has('to_mark'))
                                   <span class="help-block">
@@ -86,7 +86,7 @@
                       </div>
                       <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-8">
-                          <button type="submit" class="btn btn-danger">Salvar</button>
+                          <button type="submit" class="btn btn-danger">Save</button>
                         </div>
                       </div>
                     </form>
